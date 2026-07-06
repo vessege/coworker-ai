@@ -49,3 +49,17 @@ def ask(req: AskRequest) -> AskResponse:
     )
     result = _llm.answer(req.question, hits)
     return AskResponse(**result)
+
+
+class GenerateRequest(BaseModel):
+    instruction: str = Field(
+        ...,
+        min_length=2,
+        examples=["Schyot-faktura tayyorla: sotuvchi OOO Alfa STIR 300..."],
+    )
+
+
+@router.post("/generate")
+def generate(req: GenerateRequest) -> dict:
+    hits = _kb.search(req.instruction, _settings.retrieval_top_k, _settings.retrieval_min_score)
+    return _llm.generate(req.instruction, hits)

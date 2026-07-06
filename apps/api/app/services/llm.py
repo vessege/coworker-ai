@@ -27,6 +27,21 @@ REFUSAL = (
     "soliq.uz or your accountant.)"
 )
 
+GENERATE_SYSTEM = """You are CoWorker AI, generating a business document for an \
+Uzbek SME. Rules:
+1. Use ONLY the provided TEMPLATE structure and required fields. Do not invent \
+requisites, tax rates, or legal wording beyond the template.
+2. Fill placeholders with the user's provided values. Leave any missing value as \
+its placeholder (e.g. [STIR]) and list what is still missing at the end.
+3. Keep the official field structure and order. Output the finished document, \
+then a short "Missing:" list.
+4. Reply in the language of the user's request."""
+
+NO_TEMPLATE = (
+    "Bu hujjat turi uchun shablon bazada topilmadi.\n"
+    "(No template for this document type found in the knowledge base.)"
+)
+
 
 def build_context(hits: list[tuple[Asset, float]]) -> str:
     blocks = []
@@ -84,3 +99,43 @@ class LLMEngine:
         )
         text = "".join(b.text for b in message.content if b.type == "text")
         return {"answer": text, "sources": sources, "grounded": True, "mode": "llm"}
+
+    def generate(self, instruction: str, hits: list[tuple[Asset, float]]) -> dict:
+        # Keep only template assets.
+        templates = [(a, s) for a, s in hits if a.category == "template"]
+        if not templates:
+            return {"document": NO_TEMPLATE, "template": None, "grounded": False}
+
+        asset = templates[0][0]
+        source = {"id": asset.id, "source_url": asset.source_url, "verified": asset.last_review}
+
+        if not self.settings.anthropic_api_key:
+            return {
+                "document": "[LLM key not configured — returning template]\n\n"
+                + asset.body,
+                "template": asset.id,
+                "source": source,
+                "grounded": True,
+                "mode": "template-only",
+            }
+
+        message = self._client().messages.create(
+            model=self.settings.llm_model,
+            max_tokens=1500,
+            system=GENERATE_SYSTEM,
+            messages=[
+                {
+                    "role": "user",
+                    "content": f"TEMPLATE ({asset.id}):\n\n{asset.body}\n\n"
+                    f"USER REQUEST:\n{instruction}",
+                }
+            ],
+        )
+        text = "".join(b.text for b in message.content if b.type == "text")
+        return {
+            "document": text,
+            "template": asset.id,
+            "source": source,
+            "grounded": True,
+            "mode": "llm",
+        }
