@@ -67,6 +67,8 @@ Grounded, sourced, bilingual answers with local compliance = the moat.
 - Workflow/Task engine executes the structured workflows we already author.
 - Triggers: schedule + Telegram mention. Skills = reusable instruction modules.
 - First integrations: my.soliq.uz calendar, Didox, Excel, Google.
+- **1C connector (DONE, read-only slice):** per-tenant OData config + sync
+  into Company Context; /ask grounds answers in live 1C data.
 
 **Phase 4 — Company Brain & DNA (RFC-0005, 0006, 0007).**
 - Memory Engine (Company/Learning memory), Company DNA, runtime Knowledge Graph.

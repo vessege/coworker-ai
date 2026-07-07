@@ -7,6 +7,7 @@ from app.core.tenancy import Tenant
 from app.services.documents import DocumentStore
 from app.services.knowledge_base import KnowledgeBase
 from app.services.llm import LLMEngine
+from app.services.onec import OneCIntegration
 from app.services.tasks import PRIORITIES, TaskStore
 
 router = APIRouter()
@@ -16,6 +17,7 @@ _kb = KnowledgeBase(_settings.kb_root).load()
 _llm = LLMEngine(_settings)
 _docs = DocumentStore()
 _tasks = TaskStore()
+_onec = OneCIntegration()
 
 
 class AskRequest(BaseModel):
@@ -152,6 +154,34 @@ def generate(req: GenerateRequest, tenant: Tenant = Depends(require_tenant)) -> 
         model=result.get("model", ""),
     )
     return result
+
+
+# ---- 1C integration (read-only OData sync) ----
+
+class OneCConfigRequest(BaseModel):
+    base_url: str = Field(..., min_length=8, examples=["http://1c-server/base1"])
+    username: str = ""
+    password: str = ""
+    entities: list[str] | None = None
+
+
+@router.post("/integrations/1c/config")
+def onec_config(req: OneCConfigRequest, tenant: Tenant = Depends(require_tenant)) -> dict:
+    cfg = _onec.configure(tenant.id, req.base_url, req.username, req.password, req.entities)
+    return {"configured": True, "base_url": cfg.base_url, "entities": cfg.entities}
+
+
+@router.get("/integrations/1c/status")
+def onec_status(tenant: Tenant = Depends(require_tenant)) -> dict:
+    return _onec.status(tenant.id)
+
+
+@router.post("/integrations/1c/sync")
+def onec_sync(tenant: Tenant = Depends(require_tenant)) -> dict:
+    try:
+        return _onec.sync(tenant.id, _docs)
+    except ValueError as e:
+        return {"error": str(e)}
 
 
 # ---- Task Assets (RFC-0004) ----
