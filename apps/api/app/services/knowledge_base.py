@@ -58,6 +58,8 @@ _SYNONYM_GROUPS = [
     {"xodim", "сотрудник", "работник", "employee", "ishchi"},
     {"malumotnoma", "ma'lumotnoma", "справка", "spravka", "certificate"},
     {"ishonchnoma", "доверенность", "doverennost"},
+    {"shartnoma", "договор", "dogovor", "contract"},
+    {"xizmat", "услуга", "услуг", "service", "uslug"},
 ]
 _ALIAS: dict[str, set[str]] = {}
 for _g in _SYNONYM_GROUPS:
@@ -72,7 +74,8 @@ _SUFFIXES = [
     "larining", "laridan", "larini", "larga", "lardan", "larda", "larni",
     "lari", "ning", "dagi", "idan", "ida", "ini", "iga", "lar",
     "dan", "da", "ga", "ni", "im", "si", "i",
-    "ами", "ями", "ого", "его", "ой", "ый", "ая", "ые", "ов", "ах", "ам", "ом", "е", "ы", "а", "и", "у",
+    # Russian: multi-char endings only — single letters cause noisy collisions.
+    "ами", "ями", "ого", "его", "ой", "ый", "ая", "ые", "ов", "ев", "ах", "ам", "ом",
 ]
 
 
@@ -85,7 +88,14 @@ def _stems(token: str) -> set[str]:
 
 
 def _tokens(text: str) -> list[str]:
-    return [t.lower() for t in _WORD_RE.findall(text or "")]
+    out: list[str] = []
+    for t in _WORD_RE.findall(text or ""):
+        t = t.lower()
+        out.append(t)
+        # Split hyphenated compounds (e.g. tag "sinov-muddati") into parts too.
+        if "-" in t:
+            out.extend(p for p in t.split("-") if len(p) >= 2)
+    return out
 
 
 def _index_tokens(text: str) -> set[str]:
