@@ -7,6 +7,7 @@ from app.core.tenancy import Tenant
 from app.services.documents import DocumentStore
 from app.services.knowledge_base import KnowledgeBase
 from app.services.llm import LLMEngine
+from app.services.tasks import PRIORITIES, TaskStore
 
 router = APIRouter()
 
@@ -14,6 +15,7 @@ _settings = get_settings()
 _kb = KnowledgeBase(_settings.kb_root).load()
 _llm = LLMEngine(_settings)
 _docs = DocumentStore()
+_tasks = TaskStore()
 
 
 class AskRequest(BaseModel):
@@ -120,6 +122,12 @@ def ask(req: AskRequest, tenant: Tenant = Depends(require_tenant)) -> AskRespons
     hits.sort(key=lambda x: x[1], reverse=True)
     result = _llm.answer(req.question, hits, model=req.model)
     get_store().record_usage(tenant)
+    # RFC-0004 Learning Rule: every interaction becomes a completed Task.
+    _tasks.log_interaction(
+        tenant.id, "ask", req.question,
+        [s["id"] for s in result.get("sources", [])],
+        model=result.get("model", ""),
+    )
     return AskResponse(**result)
 
 
@@ -137,4 +145,60 @@ def generate(req: GenerateRequest, tenant: Tenant = Depends(require_tenant)) -> 
     hits = _kb.search(req.instruction, _settings.retrieval_top_k, _settings.retrieval_min_score)
     result = _llm.generate(req.instruction, hits, model=req.model)
     get_store().record_usage(tenant)
+    src = result.get("source") or {}
+    _tasks.log_interaction(
+        tenant.id, "generate", req.instruction,
+        [src["id"]] if src.get("id") else [],
+        model=result.get("model", ""),
+    )
     return result
+
+
+# ---- Task Assets (RFC-0004) ----
+
+class TaskCreate(BaseModel):
+    title: str = Field(..., min_length=2)
+    description: str = ""
+    business_goal: str = ""
+    role: str = ""
+    department: str = ""
+    priority: str = "Normal"
+    deadline: str = ""
+    related_workflow: str = ""
+    deliverables: list[str] = []
+    success_criteria: list[str] = []
+
+
+class TaskTransition(BaseModel):
+    status: str
+
+
+@router.post("/tasks")
+def create_task(req: TaskCreate, tenant: Tenant = Depends(require_tenant)) -> dict:
+    if req.priority not in PRIORITIES:
+        return {"error": f"priority must be one of {PRIORITIES}"}
+    task = _tasks.create(tenant.id, requester=tenant.id, **req.model_dump())
+    return task.to_dict()
+
+
+@router.get("/tasks")
+def list_tasks(status: str | None = None,
+               tenant: Tenant = Depends(require_tenant)) -> list[dict]:
+    return [t.to_dict() for t in _tasks.list(tenant.id, status)]
+
+
+@router.get("/tasks/{task_id}")
+def get_task(task_id: str, tenant: Tenant = Depends(require_tenant)) -> dict:
+    task = _tasks.get(tenant.id, task_id)
+    return task.to_dict() if task else {"error": "not found"}
+
+
+@router.patch("/tasks/{task_id}/status")
+def transition_task(task_id: str, req: TaskTransition,
+                    tenant: Tenant = Depends(require_tenant)) -> dict:
+    try:
+        return _tasks.transition(tenant.id, task_id, req.status).to_dict()
+    except KeyError:
+        return {"error": "not found"}
+    except ValueError as e:
+        return {"error": str(e)}

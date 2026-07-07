@@ -90,7 +90,7 @@ before validation, only RFC-0002 is adopted now; the rest are phased.
 | 0001 Identity | CKO / knowledge-factory principles | ✅ Active |
 | 0002 Knowledge Asset Standard | Asset metadata, types, lifecycle, relationships | ✅ **Adopted** — all assets migrated, CI-validated |
 | 0003 Workflow Asset Standard | Full workflow structure (steps, actors, AI capability) | ✅ **Standard adopted** — SOP assets structured + CI-validated + `/workflows` API. Engine runtime: Phase 2 |
-| 0004 Task Asset Standard | Executable task unit | Phase 2 |
+| 0004 Task Asset Standard | Executable task unit | ✅ **Adopted** — TaskStore (state machine, priorities) + /tasks API + Learning Rule (every /ask & /generate auto-logged as a completed Task) |
 | 0005 Memory Engine | Working/Company/Learning memory | Phase 3 |
 | 0006 Company DNA | Per-company behavioral model | Phase 4 |
 | 0007 Knowledge Graph + Capabilities | Reasoning + execution layer | Graph export ✅ (static); engine Phase 3 |
