@@ -18,6 +18,9 @@ jobs:
       - name: Validate RFC-0002 metadata
         working-directory: apps/api
         run: python scripts/validate_metadata.py
+      - name: Validate RFC-0003 workflows
+        working-directory: apps/api
+        run: python scripts/validate_workflows.py
       - name: Run retrieval eval (recall@4, gate 90%)
         working-directory: apps/api
         run: python scripts/eval_retrieval.py 4

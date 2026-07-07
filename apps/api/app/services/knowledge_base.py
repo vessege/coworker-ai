@@ -91,6 +91,7 @@ class Asset:
     summary: str = ""
     status: str = "Published"
     confidence: float = 0.0
+    workflow: dict = field(default_factory=dict)  # RFC-0003 structured spec
     _tokens: set[str] = field(default_factory=set)
 
     def excerpt(self, limit: int = 1800) -> str:
@@ -133,6 +134,7 @@ class KnowledgeBase:
                     summary=str(meta.get("summary", "")),
                     status=str(meta.get("status", "Published")),
                     confidence=confidence,
+                    workflow=dict(meta.get("workflow") or {}),
                 )
                 # RFC-0002: only Approved/Published assets are usable by Company Brain.
                 if asset.status.lower() not in USABLE_STATUS:

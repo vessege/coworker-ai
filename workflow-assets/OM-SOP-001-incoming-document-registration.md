@@ -29,6 +29,93 @@ title: Incoming Document Registration / Kiruvchi hujjatlarni ro'yxatga olish
 type: SOP
 updated: '2026-07-06'
 version: 1.0.0
+workflow:
+  approval_points:
+  - Manager writes the resolution (assignee + deadline)
+  automation_score: 60
+  business_goal: Register and route every incoming document without loss and track
+    it to completion.
+  difficulty: Low
+  estimated_duration: 5-15 min per document
+  expected_outputs:
+  - Registered document with unique incoming number
+  - Routing to assignee
+  - Execution record
+  failure_conditions:
+  - Document routed before registration
+  - Duplicate number assigned
+  - Deadline missed without reminder
+  kpis:
+  - Registration time
+  - '% overdue documents'
+  - Lost-document rate
+  required_inputs:
+  - Incoming document (paper/electronic)
+  - Incoming register or EDMS access
+  steps:
+  - actor: Office Manager
+    ai_capability: Observe
+    expected_result: Document accepted; integrity checked
+    number: 1
+    required_docs:
+    - Incoming document
+    title: Receive
+    validation_rule: Items marked 'personal' are not opened
+  - actor: Office Manager
+    ai_capability: Suggest
+    expected_result: Belongs to org and attachments present
+    number: 2
+    required_docs:
+    - Incoming document
+    title: Initial review
+    validation_rule: Misdelivered items returned to sender, not registered
+  - actor: Office Manager
+    ai_capability: Automate
+    expected_result: Unique incoming number + register entry
+    number: 3
+    required_docs:
+    - Incoming register / EDMS
+    title: Register
+    validation_rule: Number is sequential and unique
+  - actor: Office Manager
+    ai_capability: Draft
+    expected_result: Manager receives registered document
+    number: 4
+    required_docs: []
+    title: Present to manager
+    validation_rule: Only registered documents are presented
+  - actor: Manager
+    ai_capability: Observe
+    expected_result: Assignee and deadline captured
+    number: 5
+    required_docs: []
+    title: Record resolution
+    validation_rule: Resolution must name assignee and deadline
+  - actor: Office Manager
+    ai_capability: Execute
+    expected_result: Assignee receives document against signature
+    number: 6
+    required_docs: []
+    title: Hand over to assignee
+    validation_rule: Handover is logged
+  - actor: AI Assistant
+    ai_capability: Automate
+    expected_result: Reminder sent before deadline
+    number: 7
+    required_docs: []
+    title: Execution control
+    validation_rule: Reminder fires when <=1 day remains
+  - actor: Office Manager
+    ai_capability: Review
+    expected_result: Marked executed and filed per nomenclature
+    number: 8
+    required_docs: []
+    title: Close execution
+    validation_rule: Cannot close without execution mark
+  success_criteria:
+  - Unique incoming number assigned
+  - Assignee and deadline recorded
+  - Execution closed and filed
 ---
 
 # 🇺🇿 Kiruvchi hujjatlarni ro'yxatga olish (SOP)

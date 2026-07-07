@@ -52,6 +52,16 @@ def assets() -> list[dict]:
     ]
 
 
+@router.get("/workflows")
+def workflows() -> list[dict]:
+    """RFC-0003 structured workflow specs (consumable by a future workflow engine)."""
+    return [
+        {"id": a.id, "title": a.title, "type": a.type, "workflow": a.workflow}
+        for a in _kb.assets
+        if a.type in {"WORKFLOW", "SOP"} and a.workflow
+    ]
+
+
 @router.post("/ask", response_model=AskResponse)
 def ask(req: AskRequest) -> AskResponse:
     hits = _kb.search(

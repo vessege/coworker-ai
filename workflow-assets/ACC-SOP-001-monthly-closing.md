@@ -40,6 +40,99 @@ type: SOP
 updated: '2026-07-06'
 valid_from: 2026-07-01
 version: 1.0.0
+workflow:
+  approval_points:
+  - Chief accountant reviews before filing
+  automation_score: 45
+  business_goal: Close the accounting month error-free and file all tax reports by
+    their deadlines.
+  difficulty: Medium
+  estimated_duration: 1-3 working days per month
+  expected_outputs:
+  - Reconciled ledgers
+  - Filed tax declarations
+  - Payment confirmations
+  - Archived documents
+  failure_conditions:
+  - Report prepared without primary documents
+  - Filing >5 working days late
+  - Amounts not reconciled
+  kpis:
+  - On-time filing rate
+  - Reconciliation error rate
+  - Days to close
+  required_inputs:
+  - Invoices, acts, bank statements
+  - Payroll data
+  - Personal cabinet (my.soliq.uz) access
+  steps:
+  - actor: Accountant
+    ai_capability: Automate
+    expected_result: Complete document set
+    number: 1
+    required_docs:
+    - Invoices
+    - Acts
+    - Bank statements
+    title: Collect primary documents
+    validation_rule: No report without primary documents
+  - actor: Accountant
+    ai_capability: Review
+    expected_result: Balances reconciled
+    number: 2
+    required_docs:
+    - Bank statements
+    - Counterparty records
+    title: Reconcile
+    validation_rule: Bank and cash balances match
+  - actor: Accountant
+    ai_capability: Draft
+    expected_result: Wages and contributions calculated
+    number: 3
+    required_docs:
+    - Payroll data
+    title: Payroll & contributions
+    validation_rule: Social contributions register prepared
+  - actor: Accountant
+    ai_capability: Suggest
+    expected_result: VAT / profit / turnover amounts computed
+    number: 4
+    required_docs: []
+    title: Calculate taxes
+    validation_rule: Rates match ACC-KA-003
+  - actor: Accountant
+    ai_capability: Draft
+    expected_result: Declarations filled
+    number: 5
+    required_docs:
+    - Personal cabinet
+    title: Prepare reports
+    validation_rule: All required declarations present
+  - actor: Accountant
+    ai_capability: Review
+    expected_result: Amounts verified against primary documents
+    number: 6
+    required_docs: []
+    title: Review
+    validation_rule: Report totals equal ledger totals
+  - actor: Accountant
+    ai_capability: Execute
+    expected_result: Filed and paid by deadline
+    number: 7
+    required_docs: []
+    title: File & pay
+    validation_rule: Deadlines per ACC-KA-001; never >5 working days late
+  - actor: AI Assistant
+    ai_capability: Automate
+    expected_result: Documents and reports stored
+    number: 8
+    required_docs: []
+    title: Archive
+    validation_rule: Retention period respected
+  success_criteria:
+  - All primary documents collected
+  - Reports match primary documents
+  - Filed by deadline
 ---
 
 > ⚠️ Muddatlar dam olish kuniga ko'ra suriladi. Har oy soliq.uz taqvimi bilan tekshiring.
