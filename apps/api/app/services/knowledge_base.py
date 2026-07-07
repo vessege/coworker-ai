@@ -65,15 +65,43 @@ for _g in _SYNONYM_GROUPS:
         _ALIAS.setdefault(_w, set()).update(_g)
 
 
+# Light suffix stripping for Uzbek/Russian agglutination, so "fakturada"
+# matches "faktura" and "muddati" matches "muddat". Longest suffixes first;
+# stems shorter than 3 chars are not produced.
+_SUFFIXES = [
+    "larining", "laridan", "larini", "larga", "lardan", "larda", "larni",
+    "lari", "ning", "dagi", "idan", "ida", "ini", "iga", "lar",
+    "dan", "da", "ga", "ni", "im", "si", "i",
+    "ами", "ями", "ого", "его", "ой", "ый", "ая", "ые", "ов", "ах", "ам", "ом", "е", "ы", "а", "и", "у",
+]
+
+
+def _stems(token: str) -> set[str]:
+    out = {token}
+    for suf in _SUFFIXES:
+        if token.endswith(suf) and len(token) - len(suf) >= 3:
+            out.add(token[: -len(suf)])
+    return out
+
+
 def _tokens(text: str) -> list[str]:
     return [t.lower() for t in _WORD_RE.findall(text or "")]
+
+
+def _index_tokens(text: str) -> set[str]:
+    """Tokens + stems, for building an index."""
+    out: set[str] = set()
+    for t in _tokens(text):
+        out |= _stems(t)
+    return out
 
 
 def _expand(terms: list[str]) -> set[str]:
     out: set[str] = set()
     for t in terms:
-        out.add(t)
-        out |= _ALIAS.get(t, set())
+        for s in _stems(t):
+            out.add(s)
+            out |= _ALIAS.get(s, set())
     return out
 
 
@@ -150,7 +178,7 @@ class KnowledgeBase:
                 index_text = " ".join(
                     [asset.title, asset.summary, " ".join(asset.tags), asset.category, asset.body]
                 )
-                asset._tokens = set(_tokens(index_text))
+                asset._tokens = _index_tokens(index_text)
                 self.assets.append(asset)
         return self
 
@@ -161,7 +189,7 @@ class KnowledgeBase:
         scored: list[tuple[Asset, float]] = []
         for asset in self.assets:
             # Weighted overlap: title/tag hits count double.
-            title_tag = set(_tokens(asset.title + " " + " ".join(asset.tags)))
+            title_tag = _index_tokens(asset.title + " " + " ".join(asset.tags))
             score = 0.0
             for term in q:
                 if term in title_tag:

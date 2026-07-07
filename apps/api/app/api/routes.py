@@ -4,6 +4,7 @@ from pydantic import BaseModel, Field
 from app.api.deps import get_store, require_tenant
 from app.core.config import MODELS, get_settings, provider_key
 from app.core.tenancy import Tenant
+from app.services.documents import DocumentStore
 from app.services.knowledge_base import KnowledgeBase
 from app.services.llm import LLMEngine
 
@@ -12,6 +13,7 @@ router = APIRouter()
 _settings = get_settings()
 _kb = KnowledgeBase(_settings.kb_root).load()
 _llm = LLMEngine(_settings)
+_docs = DocumentStore()
 
 
 class AskRequest(BaseModel):
@@ -87,11 +89,35 @@ def me(tenant: Tenant = Depends(require_tenant)) -> dict:
             "used": tenant.used, "remaining": tenant.remaining()}
 
 
+class DocumentUpload(BaseModel):
+    name: str = Field(..., min_length=1, examples=["schyot-faktura-158.md"])
+    content: str = Field(..., min_length=10)
+
+
+@router.post("/documents")
+def upload_document(req: DocumentUpload, tenant: Tenant = Depends(require_tenant)) -> dict:
+    doc = _docs.add(tenant.id, req.name, req.content)
+    return {"id": doc.id, "title": doc.title, "summary": doc.summary}
+
+
+@router.get("/documents")
+def list_documents(tenant: Tenant = Depends(require_tenant)) -> list[dict]:
+    return [
+        {"id": d.id, "title": d.title, "summary": d.summary}
+        for d in _docs.list(tenant.id)
+    ]
+
+
 @router.post("/ask", response_model=AskResponse)
 def ask(req: AskRequest, tenant: Tenant = Depends(require_tenant)) -> AskResponse:
-    hits = _kb.search(
-        req.question, _settings.retrieval_top_k, _settings.retrieval_min_score
-    )
+    # Search the shared KB and the tenant's own uploaded documents together.
+    # The user's own documents get up to 2 reserved slots: when someone asks
+    # about THEIR paperwork, it must not be crowded out by KB assets.
+    top_k = _settings.retrieval_top_k
+    kb_hits = _kb.search(req.question, top_k, _settings.retrieval_min_score)
+    doc_hits = _docs.search(tenant.id, req.question, 2, _settings.retrieval_min_score)
+    hits = doc_hits + kb_hits[: top_k - len(doc_hits)]
+    hits.sort(key=lambda x: x[1], reverse=True)
     result = _llm.answer(req.question, hits, model=req.model)
     get_store().record_usage(tenant)
     return AskResponse(**result)
