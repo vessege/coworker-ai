@@ -33,3 +33,13 @@
 {"q": "xodimni qanday ishga olaman rasmiylashtirish", "expect": ["HR-SOP-001", "HR-CHK-001"]}
 {"q": "ishga qabul buyrugi shabloni", "expect": ["HR-TPL-001"]}
 {"q": "mehnat shartnomasi yozma bolishi shartmi", "expect": ["HR-FAQ-001", "HR-KA-001", "HR-SOP-001"]}
+{"q": "YaTT qancha soliq tolaydi 2026", "expect": ["ACC-KA-005", "ACC-KA-002", "ACC-KA-003"]}
+{"q": "ИП налоги сколько платит", "expect": ["ACC-KA-005", "ACC-KA-002", "ACC-KA-003"]}
+{"q": "chorak yopish hisobot checklist", "expect": ["ACC-CHK-001"]}
+{"q": "ishonchnoma shabloni tovar olish", "expect": ["ACC-TPL-004"]}
+{"q": "birlamchi hujjat qoidalari EHF", "expect": ["ACC-BR-001", "ACC-TPL-001"]}
+{"q": "chiquvchi xatni qanday jonataman", "expect": ["OM-SOP-002", "OM-TPL-001"]}
+{"q": "ish joyidan malumotnoma", "expect": ["OM-TPL-002"]}
+{"q": "справка с места работы", "expect": ["OM-TPL-002"]}
+{"q": "xodim ishdan chiqishida nima qilaman", "expect": ["OM-CHK-002"]}
+{"q": "muhr qayerga bosiladi", "expect": ["OM-FAQ-001", "OM-GLO-001"]}

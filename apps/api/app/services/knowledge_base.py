@@ -56,6 +56,8 @@ _SYNONYM_GROUPS = [
     {"buyruq", "приказ", "prikaz", "order"},
     {"mehnat", "трудовой", "labour", "labor", "trudovoy"},
     {"xodim", "сотрудник", "работник", "employee", "ishchi"},
+    {"malumotnoma", "ma'lumotnoma", "справка", "spravka", "certificate"},
+    {"ishonchnoma", "доверенность", "doverennost"},
 ]
 _ALIAS: dict[str, set[str]] = {}
 for _g in _SYNONYM_GROUPS:
