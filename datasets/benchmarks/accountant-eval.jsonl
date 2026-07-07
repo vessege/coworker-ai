@@ -27,3 +27,9 @@
 {"q": "oylik hisobot jarayoni bosqichlari", "expect": ["ACC-SOP-001"]}
 {"q": "xizmat shartnomasi shabloni tayyorla", "expect": ["ACC-TPL-003"]}
 {"q": "договор услуг shablon", "expect": ["ACC-TPL-003"]}
+{"q": "sinov muddati qancha bolishi mumkin", "expect": ["HR-FAQ-001", "HR-KA-001"]}
+{"q": "yillik mehnat tatili necha kun", "expect": ["HR-FAQ-001", "HR-KA-001"]}
+{"q": "испытательный срок сколько месяцев", "expect": ["HR-FAQ-001", "HR-KA-001"]}
+{"q": "xodimni qanday ishga olaman rasmiylashtirish", "expect": ["HR-SOP-001", "HR-CHK-001"]}
+{"q": "ishga qabul buyrugi shabloni", "expect": ["HR-TPL-001"]}
+{"q": "mehnat shartnomasi yozma bolishi shartmi", "expect": ["HR-FAQ-001", "HR-KA-001", "HR-SOP-001"]}

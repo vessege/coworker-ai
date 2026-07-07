@@ -37,6 +37,15 @@
       "confidence": 0.8
     },
     {
+      "id": "HR-KA-001",
+      "title": "Labour Code 2023 — Key Employment Rules / Mehnat kodeksi 2023 — asosiy qoidalar",
+      "type": "FACT",
+      "role": "HR",
+      "department": "Human Resources",
+      "status": "Approved",
+      "confidence": 0.85
+    },
+    {
       "id": "ACC-FAQ-001",
       "title": "Tax Deadline FAQ (SME) / Soliq muddatlari bo'yicha savol-javob (KO'B)",
       "type": "FAQ",
@@ -55,6 +64,15 @@
       "confidence": 0.8
     },
     {
+      "id": "HR-FAQ-001",
+      "title": "Labour Law FAQ (SME) / Mehnat huquqi savol-javob (KO'B)",
+      "type": "FAQ",
+      "role": "HR",
+      "department": "Human Resources",
+      "status": "Approved",
+      "confidence": 0.85
+    },
+    {
       "id": "ACC-SOP-001",
       "title": "Monthly Accounting Close & Reporting / Oylik buxgalteriya yopilishi va hisobot",
       "type": "SOP",
@@ -64,6 +82,15 @@
       "confidence": 0.8
     },
     {
+      "id": "HR-SOP-001",
+      "title": "Employee Hiring & Formalization / Xodimni ishga qabul qilish va rasmiylashtirish",
+      "type": "SOP",
+      "role": "HR",
+      "department": "Human Resources",
+      "status": "Approved",
+      "confidence": 0.85
+    },
+    {
       "id": "OM-SOP-001",
       "title": "Incoming Document Registration / Kiruvchi hujjatlarni ro'yxatga olish",
       "type": "SOP",
@@ -71,6 +98,15 @@
       "department": "Administration",
       "status": "Published",
       "confidence": 0.9
+    },
+    {
+      "id": "HR-CHK-001",
+      "title": "Hiring Compliance Checklist / Ishga qabul qilishda huquqiy tekshiruv checklisti",
+      "type": "CHECKLIST",
+      "role": "HR",
+      "department": "Human Resources",
+      "status": "Approved",
+      "confidence": 0.85
     },
     {
       "id": "OM-CHK-001",
@@ -105,6 +141,15 @@
       "type": "TEMPLATE",
       "role": "Accountant",
       "department": "Finance & Accounting",
+      "status": "Approved",
+      "confidence": 0.8
+    },
+    {
+      "id": "HR-TPL-001",
+      "title": "Hiring Order (Buyruq) / Ishga qabul qilish to'g'risida buyruq",
+      "type": "TEMPLATE",
+      "role": "HR",
+      "department": "Human Resources",
       "status": "Approved",
       "confidence": 0.8
     },
@@ -186,6 +231,16 @@
       "target": "ACC-FAQ-001"
     },
     {
+      "source": "HR-KA-001",
+      "type": "references",
+      "target": "HR-SOP-001"
+    },
+    {
+      "source": "HR-KA-001",
+      "type": "references",
+      "target": "HR-FAQ-001"
+    },
+    {
       "source": "ACC-FAQ-001",
       "type": "related_to",
       "target": "ACC-KA-001"
@@ -201,6 +256,11 @@
       "target": "ACC-KA-003"
     },
     {
+      "source": "HR-FAQ-001",
+      "type": "references",
+      "target": "HR-KA-001"
+    },
+    {
       "source": "ACC-SOP-001",
       "type": "related_to",
       "target": "ACC-KA-001"
@@ -214,6 +274,31 @@
       "source": "ACC-SOP-001",
       "type": "related_to",
       "target": "ACC-TPL-001"
+    },
+    {
+      "source": "HR-SOP-001",
+      "type": "requires",
+      "target": "HR-KA-001"
+    },
+    {
+      "source": "HR-SOP-001",
+      "type": "produces",
+      "target": "HR-TPL-001"
+    },
+    {
+      "source": "HR-SOP-001",
+      "type": "references",
+      "target": "OM-CHK-001"
+    },
+    {
+      "source": "HR-CHK-001",
+      "type": "depends_on",
+      "target": "HR-SOP-001"
+    },
+    {
+      "source": "HR-CHK-001",
+      "type": "references",
+      "target": "OM-CHK-001"
     },
     {
       "source": "ACC-TPL-001",
@@ -239,6 +324,16 @@
       "source": "ACC-TPL-003",
       "type": "related_to",
       "target": "ACC-TPL-002"
+    },
+    {
+      "source": "HR-TPL-001",
+      "type": "created_from",
+      "target": "HR-SOP-001"
+    },
+    {
+      "source": "HR-TPL-001",
+      "type": "references",
+      "target": "OM-TPL-001"
     },
     {
       "source": "ACC-DT-001",

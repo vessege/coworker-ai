@@ -50,6 +50,12 @@ _SYNONYM_GROUPS = [
     {"hujjat", "документ", "dokument", "document"},
     {"royxat", "регистрация", "register", "registratsiya"},
     {"shablon", "шаблон", "template", "namuna"},
+    {"sinov", "испытательный", "probation", "ispitatelniy"},
+    {"muddat", "срок", "term"},
+    {"tatil", "отпуск", "otpusk", "leave", "ta'til", "taʼtil"},
+    {"buyruq", "приказ", "prikaz", "order"},
+    {"mehnat", "трудовой", "labour", "labor", "trudovoy"},
+    {"xodim", "сотрудник", "работник", "employee", "ishchi"},
 ]
 _ALIAS: dict[str, set[str]] = {}
 for _g in _SYNONYM_GROUPS:
