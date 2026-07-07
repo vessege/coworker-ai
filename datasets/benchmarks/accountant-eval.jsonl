@@ -22,3 +22,8 @@
 {"q": "kiruvchi hujjatni qanday royxatga olaman", "expect": ["OM-SOP-001", "OM-BR-001"]}
 {"q": "yangi xodim ishga qabul checklist", "expect": ["OM-CHK-001"]}
 {"q": "ish yuritish atamalari", "expect": ["OM-GLO-001"]}
+{"q": "qaysi soliq rejimini tanlashim kerak qaror", "expect": ["ACC-DT-001", "ACC-KA-002"]}
+{"q": "oyni qanday yopaman buxgalteriya", "expect": ["ACC-SOP-001"]}
+{"q": "oylik hisobot jarayoni bosqichlari", "expect": ["ACC-SOP-001"]}
+{"q": "xizmat shartnomasi shabloni tayyorla", "expect": ["ACC-TPL-003"]}
+{"q": "договор услуг shablon", "expect": ["ACC-TPL-003"]}
