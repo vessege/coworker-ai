@@ -54,3 +54,6 @@ docker-data/
 # Misc
 tmp/
 .cache/
+
+# Tenant secrets
+config/tenants.json

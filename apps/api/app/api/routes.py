@@ -1,7 +1,9 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends
 from pydantic import BaseModel, Field
 
+from app.api.deps import get_store, require_tenant
 from app.core.config import MODELS, get_settings, provider_key
+from app.core.tenancy import Tenant
 from app.services.knowledge_base import KnowledgeBase
 from app.services.llm import LLMEngine
 
@@ -79,12 +81,19 @@ def workflows() -> list[dict]:
     ]
 
 
+@router.get("/me")
+def me(tenant: Tenant = Depends(require_tenant)) -> dict:
+    return {"id": tenant.id, "name": tenant.name, "plan": tenant.plan,
+            "used": tenant.used, "remaining": tenant.remaining()}
+
+
 @router.post("/ask", response_model=AskResponse)
-def ask(req: AskRequest) -> AskResponse:
+def ask(req: AskRequest, tenant: Tenant = Depends(require_tenant)) -> AskResponse:
     hits = _kb.search(
         req.question, _settings.retrieval_top_k, _settings.retrieval_min_score
     )
     result = _llm.answer(req.question, hits, model=req.model)
+    get_store().record_usage(tenant)
     return AskResponse(**result)
 
 
@@ -98,6 +107,8 @@ class GenerateRequest(BaseModel):
 
 
 @router.post("/generate")
-def generate(req: GenerateRequest) -> dict:
+def generate(req: GenerateRequest, tenant: Tenant = Depends(require_tenant)) -> dict:
     hits = _kb.search(req.instruction, _settings.retrieval_top_k, _settings.retrieval_min_score)
-    return _llm.generate(req.instruction, hits, model=req.model)
+    result = _llm.generate(req.instruction, hits, model=req.model)
+    get_store().record_usage(tenant)
+    return result

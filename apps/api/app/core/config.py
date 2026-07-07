@@ -28,6 +28,14 @@ class Settings(BaseSettings):
     # CORS (comma-separated origins allowed to call the API from the browser)
     cors_origins: list[str] = ["http://localhost:3000"]
 
+    # Multi-tenancy / auth
+    tenants_file: Path = Path(__file__).resolve().parents[4] / "config" / "tenants.json"
+    dev_api_key: str = "dev-key"
+
+    @property
+    def dev_mode(self) -> bool:
+        return self.app_env != "production"
+
 
 # Model registry: id -> {provider, label}. The selector shows these; a model is
 # "available" only if its provider's API key is configured.

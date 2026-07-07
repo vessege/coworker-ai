@@ -1,0 +1,16 @@
+[
+  {
+    "id": "acme-buxgalteriya",
+    "name": "ACME Buxgalteriya MChJ",
+    "api_key": "ck_live_replace_me_1",
+    "plan": "pro",
+    "credit_limit": 5000
+  },
+  {
+    "id": "demo-sme",
+    "name": "Demo KO'B",
+    "api_key": "ck_live_replace_me_2",
+    "plan": "free",
+    "credit_limit": 100
+  }
+]

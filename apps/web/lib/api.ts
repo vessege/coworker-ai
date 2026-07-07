@@ -1,4 +1,7 @@
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+const API_KEY = process.env.NEXT_PUBLIC_API_KEY || "dev-key";
+
+const authHeaders = (): Record<string, string> => ({ "X-API-Key": API_KEY });
 
 export interface SourceRef {
   id: string;
@@ -24,9 +27,11 @@ export interface GenerateResponse {
 async function post<T>(path: string, body: unknown): Promise<T> {
   const res = await fetch(`${API_URL}/api/v1${path}`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: { "Content-Type": "application/json", ...authHeaders() },
     body: JSON.stringify(body),
   });
+  if (res.status === 429) throw new Error("Kredit limiti tugadi.");
+  if (res.status === 401) throw new Error("Kirish rad etildi (API kalit).");
   if (!res.ok) {
     throw new Error(`API xatosi (${res.status}). Server ishlab turibdimi?`);
   }
