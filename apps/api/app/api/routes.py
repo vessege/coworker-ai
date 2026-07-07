@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 from pydantic import BaseModel, Field
 
-from app.core.config import get_settings
+from app.core.config import MODELS, get_settings, provider_key
 from app.services.knowledge_base import KnowledgeBase
 from app.services.llm import LLMEngine
 
@@ -14,6 +14,7 @@ _llm = LLMEngine(_settings)
 
 class AskRequest(BaseModel):
     question: str = Field(..., min_length=2, examples=["QQS hisobotini qachon topshiraman?"])
+    model: str | None = None
 
 
 class SourceRef(BaseModel):
@@ -27,11 +28,27 @@ class AskResponse(BaseModel):
     sources: list[SourceRef]
     grounded: bool
     mode: str = ""
+    model: str = ""
 
 
 @router.get("/health")
 def health() -> dict:
     return {"status": "ok", "assets_loaded": len(_kb.assets)}
+
+
+@router.get("/models")
+def models() -> list[dict]:
+    """Available models for the selector; `available` reflects configured keys."""
+    return [
+        {
+            "id": mid,
+            "label": m["label"],
+            "provider": m["provider"],
+            "available": bool(provider_key(_settings, m["provider"])),
+            "default": mid == _settings.default_model,
+        }
+        for mid, m in MODELS.items()
+    ]
 
 
 @router.get("/assets")
@@ -67,7 +84,7 @@ def ask(req: AskRequest) -> AskResponse:
     hits = _kb.search(
         req.question, _settings.retrieval_top_k, _settings.retrieval_min_score
     )
-    result = _llm.answer(req.question, hits)
+    result = _llm.answer(req.question, hits, model=req.model)
     return AskResponse(**result)
 
 
@@ -77,9 +94,10 @@ class GenerateRequest(BaseModel):
         min_length=2,
         examples=["Schyot-faktura tayyorla: sotuvchi OOO Alfa STIR 300..."],
     )
+    model: str | None = None
 
 
 @router.post("/generate")
 def generate(req: GenerateRequest) -> dict:
     hits = _kb.search(req.instruction, _settings.retrieval_top_k, _settings.retrieval_min_score)
-    return _llm.generate(req.instruction, hits)
+    return _llm.generate(req.instruction, hits, model=req.model)

@@ -51,10 +51,20 @@ async function get<T>(path: string): Promise<T> {
   return res.json() as Promise<T>;
 }
 
-export const ask = (question: string) =>
-  post<AskResponse>("/ask", { question });
+export interface ModelInfo {
+  id: string;
+  label: string;
+  provider: string;
+  available: boolean;
+  default: boolean;
+}
 
-export const generate = (instruction: string) =>
-  post<GenerateResponse>("/generate", { instruction });
+export const ask = (question: string, model?: string) =>
+  post<AskResponse>("/ask", { question, model });
+
+export const generate = (instruction: string, model?: string) =>
+  post<GenerateResponse>("/generate", { instruction, model });
 
 export const listAssets = () => get<AssetCard[]>("/assets");
+
+export const listModels = () => get<ModelInfo[]>("/models");

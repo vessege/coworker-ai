@@ -124,6 +124,22 @@ a { color: inherit; }
 }
 .mode.active { border-color: var(--brand); color: var(--brand); background: color-mix(in srgb, var(--brand) 8%, transparent); font-weight: 600; }
 .composer-right { display: flex; align-items: center; gap: 8px; }
+.model-select { position: relative; }
+.model-select .pill { cursor: pointer; }
+.model-menu {
+  position: absolute; right: 0; bottom: 44px; width: 220px; z-index: 20;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+  box-shadow: var(--shadow); padding: 6px; display: flex; flex-direction: column; gap: 2px;
+}
+.model-item {
+  display: flex; align-items: center; justify-content: space-between; gap: 8px;
+  border: 0; background: transparent; color: var(--text); text-align: left;
+  padding: 8px 10px; border-radius: 8px; font-size: 13px; cursor: pointer;
+}
+.model-item:hover:not(:disabled) { background: var(--surface-2); }
+.model-item:disabled { opacity: .45; cursor: not-allowed; }
+.model-item.sel { color: var(--brand); font-weight: 600; }
+.model-tag { font-size: 11px; color: var(--muted); }
 .send {
   width: 38px; height: 38px; border-radius: 11px; border: 0; cursor: pointer;
   background: var(--brand); color: var(--brand-ink); font-size: 17px;

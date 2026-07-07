@@ -5,9 +5,11 @@ import {
   ask,
   generate,
   listAssets,
+  listModels,
   type AskResponse,
   type GenerateResponse,
   type AssetCard,
+  type ModelInfo,
   type SourceRef,
 } from "@/lib/api";
 
@@ -83,10 +85,21 @@ export default function Home() {
   const [genRes, setGenRes] = useState<GenerateResponse | null>(null);
   const [assets, setAssets] = useState<AssetCard[]>([]);
   const [tab, setTab] = useState(0);
+  const [models, setModels] = useState<ModelInfo[]>([]);
+  const [model, setModel] = useState<string>("");
+  const [modelMenu, setModelMenu] = useState(false);
 
   useEffect(() => {
     listAssets().then(setAssets).catch(() => {});
+    listModels()
+      .then((ms) => {
+        setModels(ms);
+        setModel(ms.find((m) => m.default)?.id ?? ms[0]?.id ?? "");
+      })
+      .catch(() => {});
   }, []);
+
+  const modelLabel = models.find((m) => m.id === model)?.label ?? "Claude";
 
   const visible = useMemo(
     () => assets.filter(TAB_FILTERS[tab].test),
@@ -103,8 +116,8 @@ export default function Home() {
     setGenRes(null);
     setView("result");
     try {
-      if (mode === "ask") setAskRes(await ask(q));
-      else setGenRes(await generate(q));
+      if (mode === "ask") setAskRes(await ask(q, model));
+      else setGenRes(await generate(q, model));
     } catch (e) {
       setError(e instanceof Error ? e.message : "Xatolik yuz berdi");
     } finally {
@@ -165,7 +178,28 @@ export default function Home() {
                     <button className={"mode" + (mode === "generate" ? " active" : "")} onClick={() => setMode("generate")}>Hujjat</button>
                   </div>
                   <div className="composer-right">
-                    <span className="pill">Claude</span>
+                    <div className="model-select">
+                      <button className="pill" onClick={() => setModelMenu((v) => !v)}>
+                        {modelLabel} <span style={{ opacity: 0.6 }}>▾</span>
+                      </button>
+                      {modelMenu && (
+                        <div className="model-menu">
+                          {models.map((m) => (
+                            <button
+                              key={m.id}
+                              className={"model-item" + (m.id === model ? " sel" : "")}
+                              disabled={!m.available}
+                              onClick={() => { setModel(m.id); setModelMenu(false); }}
+                            >
+                              <span>{m.label}</span>
+                              <span className="model-tag">
+                                {m.id === model ? "✓" : m.available ? m.provider : "kalit yo'q"}
+                              </span>
+                            </button>
+                          ))}
+                        </div>
+                      )}
+                    </div>
                     <button className="send" onClick={() => submit()} disabled={loading}>↑</button>
                   </div>
                 </div>

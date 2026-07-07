@@ -6,7 +6,7 @@ answer ONLY from retrieved KB context; cite sources; refuse when unsure.
 
 from __future__ import annotations
 
-from app.core.config import Settings
+from app.core.config import MODELS, Settings, provider_key
 from app.services.knowledge_base import Asset
 
 SYSTEM_PROMPT = """You are CoWorker AI, an AI coworker for Uzbek SME accountants \
@@ -59,13 +59,36 @@ class LLMEngine:
     def __init__(self, settings: Settings):
         self.settings = settings
 
-    def _client(self):
-        # Imported lazily so the API boots even without the SDK/key configured.
-        from anthropic import Anthropic
+    def _resolve(self, model: str | None) -> tuple[str, str, str]:
+        """Return (model_id, provider, key). Falls back to the default model."""
+        model_id = model if model in MODELS else self.settings.default_model
+        provider = MODELS[model_id]["provider"]
+        return model_id, provider, provider_key(self.settings, provider)
 
-        return Anthropic(api_key=self.settings.anthropic_api_key)
+    def _complete(self, system: str, user: str, model_id: str, provider: str,
+                  key: str, max_tokens: int) -> str:
+        """Route a single completion to the chosen provider. Lazy SDK imports."""
+        if provider == "anthropic":
+            from anthropic import Anthropic
 
-    def answer(self, question: str, hits: list[tuple[Asset, float]]) -> dict:
+            msg = Anthropic(api_key=key).messages.create(
+                model=model_id, max_tokens=max_tokens, system=system,
+                messages=[{"role": "user", "content": user}],
+            )
+            return "".join(b.text for b in msg.content if b.type == "text")
+        if provider == "openai":
+            from openai import OpenAI
+
+            resp = OpenAI(api_key=key).chat.completions.create(
+                model=model_id, max_tokens=max_tokens,
+                messages=[{"role": "system", "content": system},
+                          {"role": "user", "content": user}],
+            )
+            return resp.choices[0].message.content or ""
+        raise ValueError(f"Unknown provider: {provider}")
+
+    def answer(self, question: str, hits: list[tuple[Asset, float]],
+               model: str | None = None) -> dict:
         if not hits:
             return {"answer": REFUSAL, "sources": [], "grounded": False}
 
@@ -73,69 +96,41 @@ class LLMEngine:
             {"id": a.id, "source_url": a.source_url, "verified": a.last_review}
             for a, _ in hits
         ]
+        model_id, provider, key = self._resolve(model)
 
-        if not self.settings.anthropic_api_key:
-            # Offline/dev mode: no key configured. Return retrieved context so the
-            # pipeline is demonstrable without external calls.
+        if not key:
+            # No key for the chosen provider: return retrieved context so the
+            # pipeline stays demonstrable without external calls.
             return {
                 "answer": "[LLM key not configured — returning retrieved context]\n\n"
                 + build_context(hits),
-                "sources": sources,
-                "grounded": True,
-                "mode": "retrieval-only",
+                "sources": sources, "grounded": True, "mode": "retrieval-only",
+                "model": model_id,
             }
 
-        message = self._client().messages.create(
-            model=self.settings.llm_model,
-            max_tokens=1024,
-            system=SYSTEM_PROMPT,
-            messages=[
-                {
-                    "role": "user",
-                    "content": f"KNOWLEDGE CONTEXT:\n\n{build_context(hits)}\n\n"
-                    f"USER QUESTION:\n{question}",
-                }
-            ],
-        )
-        text = "".join(b.text for b in message.content if b.type == "text")
-        return {"answer": text, "sources": sources, "grounded": True, "mode": "llm"}
+        user = f"KNOWLEDGE CONTEXT:\n\n{build_context(hits)}\n\nUSER QUESTION:\n{question}"
+        text = self._complete(SYSTEM_PROMPT, user, model_id, provider, key, 1024)
+        return {"answer": text, "sources": sources, "grounded": True,
+                "mode": "llm", "model": model_id}
 
-    def generate(self, instruction: str, hits: list[tuple[Asset, float]]) -> dict:
-        # Keep only template assets.
+    def generate(self, instruction: str, hits: list[tuple[Asset, float]],
+                 model: str | None = None) -> dict:
         templates = [(a, s) for a, s in hits if a.category == "template"]
         if not templates:
             return {"document": NO_TEMPLATE, "template": None, "grounded": False}
 
         asset = templates[0][0]
         source = {"id": asset.id, "source_url": asset.source_url, "verified": asset.last_review}
+        model_id, provider, key = self._resolve(model)
 
-        if not self.settings.anthropic_api_key:
+        if not key:
             return {
-                "document": "[LLM key not configured — returning template]\n\n"
-                + asset.body,
-                "template": asset.id,
-                "source": source,
-                "grounded": True,
-                "mode": "template-only",
+                "document": "[LLM key not configured — returning template]\n\n" + asset.body,
+                "template": asset.id, "source": source, "grounded": True,
+                "mode": "template-only", "model": model_id,
             }
 
-        message = self._client().messages.create(
-            model=self.settings.llm_model,
-            max_tokens=1500,
-            system=GENERATE_SYSTEM,
-            messages=[
-                {
-                    "role": "user",
-                    "content": f"TEMPLATE ({asset.id}):\n\n{asset.body}\n\n"
-                    f"USER REQUEST:\n{instruction}",
-                }
-            ],
-        )
-        text = "".join(b.text for b in message.content if b.type == "text")
-        return {
-            "document": text,
-            "template": asset.id,
-            "source": source,
-            "grounded": True,
-            "mode": "llm",
-        }
+        user = f"TEMPLATE ({asset.id}):\n\n{asset.body}\n\nUSER REQUEST:\n{instruction}"
+        text = self._complete(GENERATE_SYSTEM, user, model_id, provider, key, 1500)
+        return {"document": text, "template": asset.id, "source": source,
+                "grounded": True, "mode": "llm", "model": model_id}
