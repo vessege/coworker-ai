@@ -29,9 +29,44 @@ KB_DIRS = [
 
 _WORD_RE = re.compile(r"[\wʼ'-]+", re.UNICODE)
 
+# Cross-language / synonym groups (uz / ru / en + common misspellings).
+# A query term in any group is expanded to the whole group before scoring, so
+# "ндс", "nds" or "vat" all match assets that say "qqs". This is the main lever
+# against retrieval misses on multilingual SME input.
+_SYNONYM_GROUPS = [
+    {"qqs", "ндс", "nds", "vat"},
+    {"aylanma", "оборот", "оборотный", "oborot", "turnover"},
+    {"foyda", "прибыль", "pribil", "profit"},
+    {"soliq", "налог", "nalog", "tax"},
+    {"muddat", "срок", "srok", "deadline", "qachon", "когда", "kogda", "when"},
+    {"jarima", "штраф", "shtraf", "penya", "пеня", "penalty", "fine"},
+    {"stavka", "ставка", "rate", "foiz", "процент", "percent"},
+    {"schyot", "счет", "счёт", "faktura", "фактура", "invoice", "hisobvaraq"},
+    {"akt", "акт", "act", "dalolatnoma"},
+    {"ijtimoiy", "социальный", "social"},
+    {"rejim", "режим", "regime"},
+    {"yatt", "ип", "ip", "tadbirkor"},
+    {"xat", "письмо", "pismo", "letter"},
+    {"hujjat", "документ", "dokument", "document"},
+    {"royxat", "регистрация", "register", "registratsiya"},
+    {"shablon", "шаблон", "template", "namuna"},
+]
+_ALIAS: dict[str, set[str]] = {}
+for _g in _SYNONYM_GROUPS:
+    for _w in _g:
+        _ALIAS.setdefault(_w, set()).update(_g)
+
 
 def _tokens(text: str) -> list[str]:
     return [t.lower() for t in _WORD_RE.findall(text or "")]
+
+
+def _expand(terms: list[str]) -> set[str]:
+    out: set[str] = set()
+    for t in terms:
+        out.add(t)
+        out |= _ALIAS.get(t, set())
+    return out
 
 
 @dataclass
@@ -86,7 +121,7 @@ class KnowledgeBase:
         return self
 
     def search(self, query: str, top_k: int, min_score: float) -> list[tuple[Asset, float]]:
-        q = _tokens(query)
+        q = _expand(_tokens(query))
         if not q:
             return []
         scored: list[tuple[Asset, float]] = []

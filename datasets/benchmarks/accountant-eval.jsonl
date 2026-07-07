@@ -1,0 +1,24 @@
+{"q": "QQS hisobotini qachon topshiraman?", "expect": ["ACC-FAQ-001", "ACC-KA-001"]}
+{"q": "когда сдавать НДС?", "expect": ["ACC-FAQ-001", "ACC-KA-001"]}
+{"q": "aylanma soliqni qachon topshiraman", "expect": ["ACC-FAQ-001", "ACC-KA-001"]}
+{"q": "foyda soligi hisoboti muddati", "expect": ["ACC-FAQ-001", "ACC-KA-001"]}
+{"q": "ijtimoiy badallar qachon tolanadi", "expect": ["ACC-FAQ-001", "ACC-KA-001"]}
+{"q": "QQS stavkasi qancha", "expect": ["ACC-FAQ-002", "ACC-KA-003"]}
+{"q": "ставка ндс сколько", "expect": ["ACC-FAQ-002", "ACC-KA-003"]}
+{"q": "foyda soligi stavkasi necha foiz", "expect": ["ACC-FAQ-002", "ACC-KA-003"]}
+{"q": "aylanma soliq stavkasi", "expect": ["ACC-KA-003", "ACC-FAQ-002", "ACC-KA-001"]}
+{"q": "qaysi soliq rejimini tanlashim kerak", "expect": ["ACC-KA-002"]}
+{"q": "qachon QQS tolovchisi bolaman chegara", "expect": ["ACC-KA-002", "ACC-FAQ-002"]}
+{"q": "YaTT qancha soliq tolaydi", "expect": ["ACC-KA-002", "ACC-KA-003", "ACC-FAQ-002"]}
+{"q": "hisobotni kechiktirsam qancha jarima", "expect": ["ACC-KA-004"]}
+{"q": "штраф за просрочку налога", "expect": ["ACC-KA-004"]}
+{"q": "penya nima", "expect": ["ACC-KA-004", "ACC-GLO-001"]}
+{"q": "schyot-faktura tayyorla", "expect": ["ACC-TPL-001"]}
+{"q": "счет фактура shablon", "expect": ["ACC-TPL-001"]}
+{"q": "bajarilgan ishlar dalolatnomasi", "expect": ["ACC-TPL-002"]}
+{"q": "STIR nima degani", "expect": ["ACC-GLO-001"]}
+{"q": "MXIK kodi nima", "expect": ["ACC-GLO-001", "ACC-TPL-001"]}
+{"q": "rasmiy xat yozib ber", "expect": ["OM-TPL-001"]}
+{"q": "kiruvchi hujjatni qanday royxatga olaman", "expect": ["OM-SOP-001", "OM-BR-001"]}
+{"q": "yangi xodim ishga qabul checklist", "expect": ["OM-CHK-001"]}
+{"q": "ish yuritish atamalari", "expect": ["OM-GLO-001"]}
