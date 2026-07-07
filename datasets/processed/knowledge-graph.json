@@ -1,0 +1,254 @@
+{
+  "nodes": [
+    {
+      "id": "ACC-KA-001",
+      "title": "Recurring Tax Reporting & Payment Calendar (Legal Entities) / Yuridik shaxslar uchun soliq hisobot va to'lov taqvimi",
+      "type": "FACT",
+      "role": "Accountant",
+      "department": "Finance & Accounting",
+      "status": "Approved",
+      "confidence": 0.8
+    },
+    {
+      "id": "ACC-KA-002",
+      "title": "SME Tax Regimes Overview / KO'B soliq rejimlari umumiy ko'rinishi",
+      "type": "FACT",
+      "role": "Accountant",
+      "department": "Finance & Accounting",
+      "status": "Approved",
+      "confidence": 0.8
+    },
+    {
+      "id": "ACC-KA-003",
+      "title": "Key Tax Rates 2026 / Asosiy soliq stavkalari 2026",
+      "type": "FACT",
+      "role": "Accountant",
+      "department": "Finance & Accounting",
+      "status": "Approved",
+      "confidence": 0.8
+    },
+    {
+      "id": "ACC-KA-004",
+      "title": "Penalties for Late Tax Filing/Payment / Soliq hisobot va to'lov kechikishi jarimalari",
+      "type": "FACT",
+      "role": "Accountant",
+      "department": "Finance & Accounting",
+      "status": "Approved",
+      "confidence": 0.8
+    },
+    {
+      "id": "ACC-FAQ-001",
+      "title": "Tax Deadline FAQ (SME) / Soliq muddatlari bo'yicha savol-javob (KO'B)",
+      "type": "FAQ",
+      "role": "Accountant",
+      "department": "Finance & Accounting",
+      "status": "Approved",
+      "confidence": 0.8
+    },
+    {
+      "id": "ACC-FAQ-002",
+      "title": "Tax Rates & Regimes FAQ / Soliq stavkalari va rejimlari savol-javob",
+      "type": "FAQ",
+      "role": "Accountant",
+      "department": "Finance & Accounting",
+      "status": "Approved",
+      "confidence": 0.8
+    },
+    {
+      "id": "ACC-SOP-001",
+      "title": "Monthly Accounting Close & Reporting / Oylik buxgalteriya yopilishi va hisobot",
+      "type": "SOP",
+      "role": "Accountant",
+      "department": "Finance & Accounting",
+      "status": "Approved",
+      "confidence": 0.8
+    },
+    {
+      "id": "OM-SOP-001",
+      "title": "Incoming Document Registration / Kiruvchi hujjatlarni ro'yxatga olish",
+      "type": "SOP",
+      "role": "Office Manager",
+      "department": "Administration",
+      "status": "Published",
+      "confidence": 0.9
+    },
+    {
+      "id": "OM-CHK-001",
+      "title": "New Employee Onboarding — Office Manager Checklist / Yangi xodimni ishga qabul qilish — ofis-menejer checklisti",
+      "type": "CHECKLIST",
+      "role": "Office Manager",
+      "department": "Administration",
+      "status": "Published",
+      "confidence": 0.9
+    },
+    {
+      "id": "ACC-TPL-001",
+      "title": "Invoice (Schyot-faktura / Hisobvaraq-faktura) / Hisobvaraq-faktura",
+      "type": "TEMPLATE",
+      "role": "Accountant",
+      "department": "Finance & Accounting",
+      "status": "Approved",
+      "confidence": 0.8
+    },
+    {
+      "id": "ACC-TPL-002",
+      "title": "Act of Completed Works/Services / Bajarilgan ishlar (xizmatlar) dalolatnomasi",
+      "type": "TEMPLATE",
+      "role": "Accountant",
+      "department": "Finance & Accounting",
+      "status": "Approved",
+      "confidence": 0.8
+    },
+    {
+      "id": "ACC-TPL-003",
+      "title": "Service Contract (Shartnoma) / Xizmat ko'rsatish shartnomasi",
+      "type": "TEMPLATE",
+      "role": "Accountant",
+      "department": "Finance & Accounting",
+      "status": "Approved",
+      "confidence": 0.8
+    },
+    {
+      "id": "OM-TPL-001",
+      "title": "Official Outgoing Business Letter / Rasmiy chiquvchi ishbilarmonlik xati",
+      "type": "TEMPLATE",
+      "role": "Office Manager",
+      "department": "Administration",
+      "status": "Published",
+      "confidence": 0.9
+    },
+    {
+      "id": "OM-BR-001",
+      "title": "Document Registration & Indexing Rules / Hujjatlarni ro'yxatga olish va indekslash qoidalari",
+      "type": "RULE",
+      "role": "Office Manager",
+      "department": "Administration",
+      "status": "Published",
+      "confidence": 0.9
+    },
+    {
+      "id": "ACC-DT-001",
+      "title": "Tax Regime Selection Decision Tree / Soliq rejimini tanlash qaror daraxti",
+      "type": "DECISION",
+      "role": "Accountant",
+      "department": "Finance & Accounting",
+      "status": "Approved",
+      "confidence": 0.8
+    },
+    {
+      "id": "ACC-GLO-001",
+      "title": "Accounting & Tax Glossary (SME) / Buxgalteriya va soliq atamalari lug'ati",
+      "type": "FACT",
+      "role": "Accountant",
+      "department": "Finance & Accounting",
+      "status": "Approved",
+      "confidence": 0.8
+    },
+    {
+      "id": "OM-GLO-001",
+      "title": "Office Management & Record-Keeping Glossary / Ish yuritish va ofis boshqaruvi lug'ati",
+      "type": "FACT",
+      "role": "Office Manager",
+      "department": "Administration",
+      "status": "Published",
+      "confidence": 0.9
+    }
+  ],
+  "edges": [
+    {
+      "source": "ACC-KA-002",
+      "type": "related_to",
+      "target": "ACC-KA-003"
+    },
+    {
+      "source": "ACC-KA-002",
+      "type": "related_to",
+      "target": "ACC-FAQ-002"
+    },
+    {
+      "source": "ACC-KA-003",
+      "type": "related_to",
+      "target": "ACC-KA-002"
+    },
+    {
+      "source": "ACC-KA-003",
+      "type": "related_to",
+      "target": "ACC-FAQ-002"
+    },
+    {
+      "source": "ACC-KA-004",
+      "type": "related_to",
+      "target": "ACC-KA-001"
+    },
+    {
+      "source": "ACC-KA-004",
+      "type": "related_to",
+      "target": "ACC-FAQ-001"
+    },
+    {
+      "source": "ACC-FAQ-001",
+      "type": "related_to",
+      "target": "ACC-KA-001"
+    },
+    {
+      "source": "ACC-FAQ-002",
+      "type": "related_to",
+      "target": "ACC-KA-002"
+    },
+    {
+      "source": "ACC-FAQ-002",
+      "type": "related_to",
+      "target": "ACC-KA-003"
+    },
+    {
+      "source": "ACC-SOP-001",
+      "type": "related_to",
+      "target": "ACC-KA-001"
+    },
+    {
+      "source": "ACC-SOP-001",
+      "type": "related_to",
+      "target": "ACC-FAQ-001"
+    },
+    {
+      "source": "ACC-SOP-001",
+      "type": "related_to",
+      "target": "ACC-TPL-001"
+    },
+    {
+      "source": "ACC-TPL-001",
+      "type": "related_to",
+      "target": "ACC-KA-001"
+    },
+    {
+      "source": "ACC-TPL-001",
+      "type": "related_to",
+      "target": "ACC-TPL-002"
+    },
+    {
+      "source": "ACC-TPL-002",
+      "type": "related_to",
+      "target": "ACC-TPL-001"
+    },
+    {
+      "source": "ACC-TPL-003",
+      "type": "related_to",
+      "target": "ACC-TPL-001"
+    },
+    {
+      "source": "ACC-TPL-003",
+      "type": "related_to",
+      "target": "ACC-TPL-002"
+    },
+    {
+      "source": "ACC-DT-001",
+      "type": "related_to",
+      "target": "ACC-KA-002"
+    },
+    {
+      "source": "ACC-DT-001",
+      "type": "related_to",
+      "target": "ACC-KA-003"
+    }
+  ]
+}

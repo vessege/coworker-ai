@@ -77,3 +77,29 @@ Priority: lex.uz / soliq.uz (official) > buxgalter.uz (authoritative secondary)
 - Language of the product UI/answers: uz / ru / both? (assets currently uz+en).
 - Which document forms first: schyot-faktura vs akt vs shartnoma.
 - Web now or Telegram bot as faster pilot channel?
+
+---
+
+## 11. RFC roadmap (phased adoption)
+
+The RFC pack (0001–0007) is the north-star architecture. To avoid over-building
+before validation, only RFC-0002 is adopted now; the rest are phased.
+
+| RFC | Scope | Phase |
+|-----|-------|-------|
+| 0001 Identity | CKO / knowledge-factory principles | ✅ Active |
+| 0002 Knowledge Asset Standard | Asset metadata, types, lifecycle, relationships | ✅ **Adopted** — all assets migrated, CI-validated |
+| 0003 Workflow Asset Standard | Full workflow structure (steps, actors, AI capability) | Phase 2 (post-MVP) |
+| 0004 Task Asset Standard | Executable task unit | Phase 2 |
+| 0005 Memory Engine | Working/Company/Learning memory | Phase 3 |
+| 0006 Company DNA | Per-company behavioral model | Phase 4 |
+| 0007 Knowledge Graph + Capabilities | Reasoning + execution layer | Graph export ✅ (static); engine Phase 3 |
+
+**Now (RFC-0002 done):** every asset is forward-compatible with the future
+Knowledge Graph, Memory Engine, and Foundation-Model training set. Metadata is
+validated in CI; a static knowledge-graph export exists
+(`datasets/processed/knowledge-graph.json`).
+
+**Not built yet (by design):** Memory Engine, Company DNA, Task Engine, and the
+runtime Knowledge Graph — these are platform layers that add no MVP value until
+real usage exists. Building them now would delay launch without reducing risk.

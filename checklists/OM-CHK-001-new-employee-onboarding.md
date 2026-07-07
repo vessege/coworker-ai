@@ -1,16 +1,34 @@
 ---
-id: OM-CHK-001
-title: New Employee Onboarding — Office Manager Checklist / Yangi xodimni ishga qabul qilish — ofis-menejer checklisti
 category: checklist
+confidence: 0.9
+country: UZ
+created: '2026-07-06'
+department: Administration
 domain: office-management
+id: OM-CHK-001
+language:
+- uz
+- en
+last_review: 2026-07-06
+owner: CKO / Knowledge Factory
+quality: production-ready
+role: Office Manager
 source: Vendor-neutral best practice; O'zbekiston Mehnat kodeksi bilan muvofiqlashtiriladi
 source_url: https://lex.uz (Mehnat kodeksi — huquqiy talablar bo'yicha tekshirilsin)
-tags: [onboarding, ishga-qabul, yangi-xodim, checklist, ofis-menejer, hr-koordinatsiya]
-quality: production-ready
-language: [uz, en]
-country: UZ
+status: Published
+summary: Office-manager checklist for coordinating new-employee onboarding.
+tags:
+- onboarding
+- ishga-qabul
+- yangi-xodim
+- checklist
+- ofis-menejer
+- hr-koordinatsiya
+title: New Employee Onboarding — Office Manager Checklist / Yangi xodimni ishga qabul
+  qilish — ofis-menejer checklisti
+type: CHECKLIST
+updated: '2026-07-06'
 version: 1.0.0
-last_review: 2026-07-06
 ---
 
 # 🇺🇿 Yangi xodimni ishga qabul qilish — ofis-menejer checklisti

@@ -17,24 +17,43 @@ Every file is a single, self-contained, reusable knowledge asset in Markdown.
 | `glossary/` | Business Vocabulary | Term definitions |
 | `faq/` | FAQ | Question–answer pairs |
 
-## Metadata schema (required front-matter)
+## Metadata schema — RFC-0002 (KAS v1.0)
+
+Every asset MUST carry these fields. Enforced by
+`apps/api/scripts/validate_metadata.py` (runs in CI).
 
 ```yaml
 ---
 id:            # unique, e.g. OM-SOP-001
-title:         # human title
-category:      # one of the categories above
-domain:        # e.g. office-management
+title:         # human title (bilingual)
+type:          # FACT|RULE|WORKFLOW|SOP|CHECKLIST|TEMPLATE|POLICY|DECISION|BEST_PRACTICE|FAQ
+category:      # directory taxonomy (knowledge-asset, template, ...)
+domain:        # e.g. accounting
+department:    # e.g. Finance & Accounting
+role:          # e.g. Accountant | Office Manager
+summary:       # one-line description
 source:        # source name
 source_url:    # traceable URL (or "vendor-neutral best practice")
 tags:          # list
-quality:       # draft | reviewed | production-ready
 language:      # [uz, en]
 country:       # UZ
+quality:       # draft | reviewed | production-ready
+status:        # Draft|Review|Approved|Published|Deprecated|Archived (only Approved/Published are used)
+confidence:    # 0.0–1.0
+owner:         # e.g. CKO / Knowledge Factory
 version:       # semver
+created:       # YYYY-MM-DD
+updated:       # YYYY-MM-DD
 last_review:   # YYYY-MM-DD
+valid_from:    # YYYY-MM-DD (optional, for time-bound facts)
+source_verified: # YYYY-MM-DD (optional)
+review_cycle:  # monthly|quarterly|semiannual|annual (optional; drives stale-check)
+relationships: # optional: [{type: requires|references|depends_on|produces|updates|related_to, target: ID}]
 ---
 ```
+
+Tooling: `scripts/migrate_rfc0002.py` (retrofit), `scripts/export_knowledge_graph.py`
+(RFC-0007 graph export), `apps/api/scripts/{validate_metadata,eval_retrieval,check_stale}.py`.
 
 ## ID scheme
 

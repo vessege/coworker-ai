@@ -1,21 +1,42 @@
 ---
-id: ACC-DT-001
-title: Tax Regime Selection Decision Tree / Soliq rejimini tanlash qaror daraxti
 category: decision-tree
+confidence: 0.8
+country: UZ
+created: '2026-01-01'
+department: Finance & Accounting
 domain: accounting
-subdomain: tax-regimes
+id: ACC-DT-001
+language:
+- uz
+- en
+last_review: 2026-07-06
+owner: CKO / Knowledge Factory
+quality: reviewed
+relationships:
+- target: ACC-KA-002
+  type: related_to
+- target: ACC-KA-003
+  type: related_to
+review_cycle: quarterly
+role: Accountant
 source: ACC-KA-002 asosida (buxgalter.uz; azma.uz)
 source_url: https://buxgalter.uz/oz/publish/doc/text212722_sk-2026_yakka_tartibdagi_tadbirkorlar_va_uzini_uzi_band_qilgan_shahslar_uchun_aylanmadan_olinadigan_soliq_buyicha_uzgarishlar
-tags: [decision-tree, soliq-rejimi, aylanma-soliq, QQS, umumiy-rejim, tanlov]
-quality: reviewed
-language: [uz, en]
-country: UZ
-version: 1.0.0
-valid_from: 2026-01-01
 source_verified: 2026-07-06
-last_review: 2026-07-06
-review_cycle: quarterly
-related: [ACC-KA-002, ACC-KA-003]
+status: Approved
+subdomain: tax-regimes
+summary: Decision tree for choosing between the turnover-tax and general tax regimes.
+tags:
+- decision-tree
+- soliq-rejimi
+- aylanma-soliq
+- QQS
+- umumiy-rejim
+- tanlov
+title: Tax Regime Selection Decision Tree / Soliq rejimini tanlash qaror daraxti
+type: DECISION
+updated: '2026-07-06'
+valid_from: 2026-01-01
+version: 1.0.0
 ---
 
 > ⚠️ Bu daraxt yo'naltiruvchi. Yakuniy qarorni buxgalter va soliq.uz bilan tasdiqlang.

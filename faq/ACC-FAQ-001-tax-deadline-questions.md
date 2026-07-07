@@ -1,21 +1,42 @@
 ---
-id: ACC-FAQ-001
-title: Tax Deadline FAQ (SME) / Soliq muddatlari bo'yicha savol-javob (KO'B)
 category: faq
-domain: accounting
-subdomain: tax-compliance
-source: buxgalter.uz; azma.uz; soliq.uz
-source_url: https://buxgalter.uz/oz/publish/doc/text205067_bosh_buhgalter_rejasi; https://soliq.uz/services-facilities/taxpayer-calendar
-tags: [faq, soliq, muddat, deadline, QQS, aylanma-soliq, savol-javob]
-quality: reviewed
-language: [uz, en]
+confidence: 0.8
 country: UZ
-version: 1.0.0
-valid_from: 2026-07-01
-source_verified: 2026-07-06
+created: '2026-07-01'
+department: Finance & Accounting
+domain: accounting
+id: ACC-FAQ-001
+language:
+- uz
+- en
 last_review: 2026-07-06
+owner: CKO / Knowledge Factory
+quality: reviewed
+relationships:
+- target: ACC-KA-001
+  type: related_to
 review_cycle: monthly
-related: [ACC-KA-001]
+role: Accountant
+source: buxgalter.uz; azma.uz; soliq.uz
+source_url: https://buxgalter.uz/oz/publish/doc/text205067_bosh_buhgalter_rejasi;
+  https://soliq.uz/services-facilities/taxpayer-calendar
+source_verified: 2026-07-06
+status: Approved
+subdomain: tax-compliance
+summary: Common questions on Uzbek tax filing and payment deadlines.
+tags:
+- faq
+- soliq
+- muddat
+- deadline
+- QQS
+- aylanma-soliq
+- savol-javob
+title: Tax Deadline FAQ (SME) / Soliq muddatlari bo'yicha savol-javob (KO'B)
+type: FAQ
+updated: '2026-07-06'
+valid_from: 2026-07-01
+version: 1.0.0
 ---
 
 > ⚠️ Ma'lumot xarakterida. Aniq sanani har oyda soliq.uz da tasdiqlang. Rasmiy soliq maslahati emas.

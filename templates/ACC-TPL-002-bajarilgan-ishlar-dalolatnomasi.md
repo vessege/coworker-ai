@@ -1,21 +1,43 @@
 ---
-id: ACC-TPL-002
-title: Act of Completed Works/Services / Bajarilgan ishlar (xizmatlar) dalolatnomasi
 category: template
-domain: accounting
-subdomain: primary-documents
-source: Vendor-neutral commercial practice; birlamchi hujjat sifatida schyot-faktura bilan birga qo'llaniladi
-source_url: vendor-neutral best practice (align with tax primary-document rules on soliq.uz)
-tags: [akt, dalolatnoma, bajarilgan-ishlar, act, birlamchi-hujjat, template, xizmat]
-quality: reviewed
-language: [uz, en]
+confidence: 0.8
 country: UZ
-version: 1.0.0
-valid_from: 2026-07-01
-source_verified: 2026-07-06
+created: '2026-07-01'
+department: Finance & Accounting
+domain: accounting
+id: ACC-TPL-002
+language:
+- uz
+- en
 last_review: 2026-07-06
+owner: CKO / Knowledge Factory
+quality: reviewed
+relationships:
+- target: ACC-TPL-001
+  type: related_to
 review_cycle: quarterly
-related: [ACC-TPL-001]
+role: Accountant
+source: Vendor-neutral commercial practice; birlamchi hujjat sifatida schyot-faktura
+  bilan birga qo'llaniladi
+source_url: vendor-neutral best practice (align with tax primary-document rules on
+  soliq.uz)
+source_verified: 2026-07-06
+status: Approved
+subdomain: primary-documents
+summary: Template for a two-party act of completed works/services.
+tags:
+- akt
+- dalolatnoma
+- bajarilgan-ishlar
+- act
+- birlamchi-hujjat
+- template
+- xizmat
+title: Act of Completed Works/Services / Bajarilgan ishlar (xizmatlar) dalolatnomasi
+type: TEMPLATE
+updated: '2026-07-06'
+valid_from: 2026-07-01
+version: 1.0.0
 ---
 
 > ℹ️ Bajarilgan ishlar/xizmatlar dalolatnomasi (akt) — ish/xizmat qabul qilinganini

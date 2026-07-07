@@ -1,21 +1,45 @@
 ---
-id: ACC-SOP-001
-title: Monthly Accounting Close & Reporting / Oylik buxgalteriya yopilishi va hisobot
 category: workflow-asset
+confidence: 0.8
+country: UZ
+created: '2026-07-01'
+department: Finance & Accounting
 domain: accounting
-subdomain: closing
+id: ACC-SOP-001
+language:
+- uz
+- en
+last_review: 2026-07-06
+owner: CKO / Knowledge Factory
+quality: reviewed
+relationships:
+- target: ACC-KA-001
+  type: related_to
+- target: ACC-FAQ-001
+  type: related_to
+- target: ACC-TPL-001
+  type: related_to
+review_cycle: quarterly
+role: Accountant
 source: Vendor-neutral best practice; muddatlar ACC-KA-001 (buxgalter.uz) asosida
 source_url: https://buxgalter.uz/oz/publish/doc/text205067_bosh_buhgalter_rejasi
-tags: [oylik-yopish, closing, hisobot, workflow, SOP, buxgalteriya, reporting]
-quality: reviewed
-language: [uz, en]
-country: UZ
-version: 1.0.0
-valid_from: 2026-07-01
 source_verified: 2026-07-06
-last_review: 2026-07-06
-review_cycle: quarterly
-related: [ACC-KA-001, ACC-FAQ-001, ACC-TPL-001]
+status: Approved
+subdomain: closing
+summary: Step-by-step monthly accounting close and tax-reporting procedure.
+tags:
+- oylik-yopish
+- closing
+- hisobot
+- workflow
+- SOP
+- buxgalteriya
+- reporting
+title: Monthly Accounting Close & Reporting / Oylik buxgalteriya yopilishi va hisobot
+type: SOP
+updated: '2026-07-06'
+valid_from: 2026-07-01
+version: 1.0.0
 ---
 
 > ⚠️ Muddatlar dam olish kuniga ko'ra suriladi. Har oy soliq.uz taqvimi bilan tekshiring.

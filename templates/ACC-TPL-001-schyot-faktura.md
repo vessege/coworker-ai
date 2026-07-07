@@ -1,21 +1,46 @@
 ---
-id: ACC-TPL-001
-title: Invoice (Schyot-faktura / Hisobvaraq-faktura) / Hisobvaraq-faktura
 category: template
-domain: accounting
-subdomain: primary-documents
-source: VM qarori №522, 25.06.2019 (elektron hisobvaraq-fakturalar); moysklad.uz; norma.uz
-source_url: https://lex.uz/uz/docs/-4386769; https://www.norma.uz/oz/qonunchilikda_yangi/hisobvaraq-faktura_rasmiylashtirish_taqdim_etish_va_qabul_qilish; https://www.moysklad.uz/uz/poleznoe/formy-dokumentov/schet-faktura-uzbekistan/
-tags: [schyot-faktura, hisobvaraq-faktura, EHF, invoice, QQS, birlamchi-hujjat, template]
-quality: reviewed
-language: [uz, en]
+confidence: 0.8
 country: UZ
-version: 1.0.0
-valid_from: 2026-07-01
-source_verified: 2026-07-06
+created: '2026-07-01'
+department: Finance & Accounting
+domain: accounting
+id: ACC-TPL-001
+language:
+- uz
+- en
 last_review: 2026-07-06
+owner: CKO / Knowledge Factory
+quality: reviewed
+relationships:
+- target: ACC-KA-001
+  type: related_to
+- target: ACC-TPL-002
+  type: related_to
 review_cycle: quarterly
-related: [ACC-KA-001, ACC-TPL-002]
+role: Accountant
+source: VM qarori №522, 25.06.2019 (elektron hisobvaraq-fakturalar); moysklad.uz;
+  norma.uz
+source_url: https://lex.uz/uz/docs/-4386769; https://www.norma.uz/oz/qonunchilikda_yangi/hisobvaraq-faktura_rasmiylashtirish_taqdim_etish_va_qabul_qilish;
+  https://www.moysklad.uz/uz/poleznoe/formy-dokumentov/schet-faktura-uzbekistan/
+source_verified: 2026-07-06
+status: Approved
+subdomain: primary-documents
+summary: Field structure of the Uzbek electronic VAT invoice (schyot-faktura) per
+  decree No.522.
+tags:
+- schyot-faktura
+- hisobvaraq-faktura
+- EHF
+- invoice
+- QQS
+- birlamchi-hujjat
+- template
+title: Invoice (Schyot-faktura / Hisobvaraq-faktura) / Hisobvaraq-faktura
+type: TEMPLATE
+updated: '2026-07-06'
+valid_from: 2026-07-01
+version: 1.0.0
 ---
 
 > ⚠️ O'zbekistonda hisobvaraq-faktura **2020-yildan majburiy elektron shaklda** (EHF)

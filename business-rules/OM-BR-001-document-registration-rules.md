@@ -1,16 +1,34 @@
 ---
-id: OM-BR-001
-title: Document Registration & Indexing Rules / Hujjatlarni ro'yxatga olish va indekslash qoidalari
 category: business-rule
+confidence: 0.9
+country: UZ
+created: '2026-07-06'
+department: Administration
 domain: office-management
+id: OM-BR-001
+language:
+- uz
+- en
+last_review: 2026-07-06
+owner: CKO / Knowledge Factory
+quality: production-ready
+role: Office Manager
 source: O'zDSt 1157:2008; umumiy ish yuritish amaliyoti
 source_url: https://lex.uz/uz/docs/-5529263; https://standart.uz
-tags: [business-rule, ro'yxatga-olish, indeks, hujjat-raqami, nazorat, qoida]
-quality: production-ready
-language: [uz, en]
-country: UZ
+status: Published
+summary: IF/THEN business rules for document registration and indexing.
+tags:
+- business-rule
+- ro'yxatga-olish
+- indeks
+- hujjat-raqami
+- nazorat
+- qoida
+title: Document Registration & Indexing Rules / Hujjatlarni ro'yxatga olish va indekslash
+  qoidalari
+type: RULE
+updated: '2026-07-06'
 version: 1.0.0
-last_review: 2026-07-06
 ---
 
 # 🇺🇿 Hujjatlarni ro'yxatga olish va indekslash qoidalari

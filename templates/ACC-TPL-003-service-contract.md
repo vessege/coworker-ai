@@ -1,21 +1,43 @@
 ---
-id: ACC-TPL-003
-title: Service Contract (Shartnoma) / Xizmat ko'rsatish shartnomasi
 category: template
-domain: accounting
-subdomain: contracts
-source: Vendor-neutral commercial practice; O'zbekiston Fuqarolik kodeksi umumiy talablari (lex.uz — tekshirilsin)
-source_url: https://lex.uz (Fuqarolik kodeksi — shartnoma talablari bo'yicha tekshirilsin)
-tags: [shartnoma, contract, xizmat, template, tomonlar, majburiyat]
-quality: reviewed
-language: [uz, en]
+confidence: 0.8
 country: UZ
-version: 1.0.0
-valid_from: 2026-01-01
-source_verified: 2026-07-06
+created: '2026-01-01'
+department: Finance & Accounting
+domain: accounting
+id: ACC-TPL-003
+language:
+- uz
+- en
 last_review: 2026-07-06
+owner: CKO / Knowledge Factory
+quality: reviewed
+relationships:
+- target: ACC-TPL-001
+  type: related_to
+- target: ACC-TPL-002
+  type: related_to
 review_cycle: semiannual
-related: [ACC-TPL-001, ACC-TPL-002]
+role: Accountant
+source: Vendor-neutral commercial practice; O'zbekiston Fuqarolik kodeksi umumiy talablari
+  (lex.uz — tekshirilsin)
+source_url: https://lex.uz (Fuqarolik kodeksi — shartnoma talablari bo'yicha tekshirilsin)
+source_verified: 2026-07-06
+status: Approved
+subdomain: contracts
+summary: General service contract (shartnoma) template for Uzbek SMEs.
+tags:
+- shartnoma
+- contract
+- xizmat
+- template
+- tomonlar
+- majburiyat
+title: Service Contract (Shartnoma) / Xizmat ko'rsatish shartnomasi
+type: TEMPLATE
+updated: '2026-07-06'
+valid_from: 2026-01-01
+version: 1.0.0
 ---
 
 > ⚠️ Umumiy tijorat shabloni. Aniq shartlar va majburiy bandlar Fuqarolik kodeksiga

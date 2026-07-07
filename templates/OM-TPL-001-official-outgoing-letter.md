@@ -1,16 +1,34 @@
 ---
-id: OM-TPL-001
-title: Official Outgoing Business Letter / Rasmiy chiquvchi ishbilarmonlik xati
 category: template
+confidence: 0.9
+country: UZ
+created: '2026-07-06'
+department: Administration
 domain: office-management
+id: OM-TPL-001
+language:
+- uz
+- en
+last_review: 2026-07-06
+owner: CKO / Knowledge Factory
+quality: production-ready
+role: Office Manager
 source: O'zDSt 1157:2008 — hujjat rekvizitlariga qo'yiladigan talablar
 source_url: https://lex.uz/uz/docs/-5529263; https://standart.uz
-tags: [xat, chiquvchi-hujjat, shablon, rekvizit, blank, business-letter, template]
-quality: production-ready
-language: [uz, en]
-country: UZ
+status: Published
+summary: Template for an official outgoing business letter per O'zDSt 1157:2008.
+tags:
+- xat
+- chiquvchi-hujjat
+- shablon
+- rekvizit
+- blank
+- business-letter
+- template
+title: Official Outgoing Business Letter / Rasmiy chiquvchi ishbilarmonlik xati
+type: TEMPLATE
+updated: '2026-07-06'
 version: 1.0.0
-last_review: 2026-07-06
 ---
 
 # 🇺🇿 Rasmiy chiquvchi xat shabloni

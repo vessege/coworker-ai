@@ -69,6 +69,10 @@ def _expand(terms: list[str]) -> set[str]:
     return out
 
 
+# RFC-0002 lifecycle statuses usable by Company Brain.
+USABLE_STATUS = {"approved", "published"}
+
+
 @dataclass
 class Asset:
     id: str
@@ -80,6 +84,13 @@ class Asset:
     last_review: str
     body: str
     tags: list[str] = field(default_factory=list)
+    # RFC-0002 fields
+    type: str = ""
+    role: str = ""
+    department: str = ""
+    summary: str = ""
+    status: str = "Published"
+    confidence: float = 0.0
     _tokens: set[str] = field(default_factory=set)
 
     def excerpt(self, limit: int = 1800) -> str:
@@ -102,6 +113,10 @@ class KnowledgeBase:
                     continue
                 post = frontmatter.load(md)
                 meta = post.metadata
+                try:
+                    confidence = float(meta.get("confidence", 0.0) or 0.0)
+                except (TypeError, ValueError):
+                    confidence = 0.0
                 asset = Asset(
                     id=str(meta.get("id", md.stem)),
                     title=str(meta.get("title", md.stem)),
@@ -112,9 +127,18 @@ class KnowledgeBase:
                     last_review=str(meta.get("last_review", "")),
                     body=post.content,
                     tags=[str(t) for t in (meta.get("tags") or [])],
+                    type=str(meta.get("type", "")),
+                    role=str(meta.get("role", "")),
+                    department=str(meta.get("department", "")),
+                    summary=str(meta.get("summary", "")),
+                    status=str(meta.get("status", "Published")),
+                    confidence=confidence,
                 )
+                # RFC-0002: only Approved/Published assets are usable by Company Brain.
+                if asset.status.lower() not in USABLE_STATUS:
+                    continue
                 index_text = " ".join(
-                    [asset.title, " ".join(asset.tags), asset.category, asset.body]
+                    [asset.title, asset.summary, " ".join(asset.tags), asset.category, asset.body]
                 )
                 asset._tokens = set(_tokens(index_text))
                 self.assets.append(asset)

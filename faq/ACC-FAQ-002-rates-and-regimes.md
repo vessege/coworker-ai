@@ -1,21 +1,44 @@
 ---
-id: ACC-FAQ-002
-title: Tax Rates & Regimes FAQ / Soliq stavkalari va rejimlari savol-javob
 category: faq
+confidence: 0.8
+country: UZ
+created: '2026-01-01'
+department: Finance & Accounting
 domain: accounting
-subdomain: tax-regimes
+id: ACC-FAQ-002
+language:
+- uz
+- en
+last_review: 2026-07-06
+owner: CKO / Knowledge Factory
+quality: reviewed
+relationships:
+- target: ACC-KA-002
+  type: related_to
+- target: ACC-KA-003
+  type: related_to
+review_cycle: quarterly
+role: Accountant
 source: buxgalter.uz; azma.uz; kun.uz
 source_url: https://buxgalter.uz/oz/publish/doc/text212722_sk-2026_yakka_tartibdagi_tadbirkorlar_va_uzini_uzi_band_qilgan_shahslar_uchun_aylanmadan_olinadigan_soliq_buyicha_uzgarishlar
-tags: [faq, stavka, rejim, QQS, aylanma-soliq, YaTT, foyda-soligi, savol-javob]
-quality: reviewed
-language: [uz, en]
-country: UZ
-version: 1.0.0
-valid_from: 2026-01-01
 source_verified: 2026-07-06
-last_review: 2026-07-06
-review_cycle: quarterly
-related: [ACC-KA-002, ACC-KA-003]
+status: Approved
+subdomain: tax-regimes
+summary: Common questions on Uzbek tax rates and regime selection.
+tags:
+- faq
+- stavka
+- rejim
+- QQS
+- aylanma-soliq
+- YaTT
+- foyda-soligi
+- savol-javob
+title: Tax Rates & Regimes FAQ / Soliq stavkalari va rejimlari savol-javob
+type: FAQ
+updated: '2026-07-06'
+valid_from: 2026-01-01
+version: 1.0.0
 ---
 
 > ⚠️ Ma'lumot xarakterida. Aniq holatni soliq.uz da tasdiqlang.

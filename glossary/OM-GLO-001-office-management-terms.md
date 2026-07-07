@@ -1,16 +1,34 @@
 ---
-id: OM-GLO-001
-title: Office Management & Record-Keeping Glossary / Ish yuritish va ofis boshqaruvi lug'ati
 category: glossary
+confidence: 0.9
+country: UZ
+created: '2026-07-06'
+department: Administration
 domain: office-management
+id: OM-GLO-001
+language:
+- uz
+- en
+last_review: 2026-07-06
+owner: CKO / Knowledge Factory
+quality: production-ready
+role: Office Manager
 source: O'zDSt 1157:2008 atamashunosligi; umumiy ish yuritish amaliyoti
 source_url: https://lex.uz/uz/docs/-5529263; https://standart.uz
-tags: [glossary, atamalar, ish-yuritish, delovodstvo, vocabulary, terms]
-quality: production-ready
-language: [uz, en]
-country: UZ
+status: Published
+summary: Bilingual glossary of office-management and record-keeping terms.
+tags:
+- glossary
+- atamalar
+- ish-yuritish
+- delovodstvo
+- vocabulary
+- terms
+title: Office Management & Record-Keeping Glossary / Ish yuritish va ofis boshqaruvi
+  lug'ati
+type: FACT
+updated: '2026-07-06'
 version: 1.0.0
-last_review: 2026-07-06
 ---
 
 # 🇺🇿 Ish yuritish va ofis boshqaruvi lug'ati

@@ -1,21 +1,45 @@
 ---
-id: ACC-KA-002
-title: SME Tax Regimes Overview / KO'B soliq rejimlari umumiy ko'rinishi
 category: knowledge-asset
-domain: accounting
-subdomain: tax-regimes
-source: buxgalter.uz; azma.uz; gazeta.uz; kun.uz (2026 soliq o'zgarishlari)
-source_url: https://buxgalter.uz/oz/publish/doc/text212722_sk-2026_yakka_tartibdagi_tadbirkorlar_va_uzini_uzi_band_qilgan_shahslar_uchun_aylanmadan_olinadigan_soliq_buyicha_uzgarishlar; https://azma.uz/tpost/soliq-yatt-ozbekiston-2026
-tags: [soliq-rejimi, aylanma-soliq, umumiy-rejim, QQS, YaTT, chegara, tax-regime]
-quality: reviewed
-language: [uz, en]
+confidence: 0.8
 country: UZ
-version: 1.0.0
-valid_from: 2026-01-01
-source_verified: 2026-07-06
+created: '2026-01-01'
+department: Finance & Accounting
+domain: accounting
+id: ACC-KA-002
+language:
+- uz
+- en
 last_review: 2026-07-06
+owner: CKO / Knowledge Factory
+quality: reviewed
+relationships:
+- target: ACC-KA-003
+  type: related_to
+- target: ACC-FAQ-002
+  type: related_to
 review_cycle: quarterly
-related: [ACC-KA-003, ACC-FAQ-002]
+role: Accountant
+source: buxgalter.uz; azma.uz; gazeta.uz; kun.uz (2026 soliq o'zgarishlari)
+source_url: https://buxgalter.uz/oz/publish/doc/text212722_sk-2026_yakka_tartibdagi_tadbirkorlar_va_uzini_uzi_band_qilgan_shahslar_uchun_aylanmadan_olinadigan_soliq_buyicha_uzgarishlar;
+  https://azma.uz/tpost/soliq-yatt-ozbekiston-2026
+source_verified: 2026-07-06
+status: Approved
+subdomain: tax-regimes
+summary: 'Uzbek SME tax regimes: simplified turnover tax vs general (VAT + profit
+  tax), thresholds, and how to choose.'
+tags:
+- soliq-rejimi
+- aylanma-soliq
+- umumiy-rejim
+- QQS
+- YaTT
+- chegara
+- tax-regime
+title: SME Tax Regimes Overview / KO'B soliq rejimlari umumiy ko'rinishi
+type: FACT
+updated: '2026-07-06'
+valid_from: 2026-01-01
+version: 1.0.0
 ---
 
 > ⚠️ Stavka va chegaralar 2026-yilda o'zgargan. Aniq holatni soliq.uz da tasdiqlang. Rasmiy maslahat emas.

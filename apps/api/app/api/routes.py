@@ -37,7 +37,17 @@ def health() -> dict:
 @router.get("/assets")
 def assets() -> list[dict]:
     return [
-        {"id": a.id, "title": a.title, "category": a.category, "path": a.path}
+        {
+            "id": a.id,
+            "title": a.title,
+            "type": a.type,
+            "role": a.role,
+            "department": a.department,
+            "summary": a.summary,
+            "status": a.status,
+            "confidence": a.confidence,
+            "path": a.path,
+        }
         for a in _kb.assets
     ]
 

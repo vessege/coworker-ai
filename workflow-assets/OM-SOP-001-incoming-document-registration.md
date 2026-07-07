@@ -1,16 +1,34 @@
 ---
-id: OM-SOP-001
-title: Incoming Document Registration / Kiruvchi hujjatlarni ro'yxatga olish
 category: workflow-asset
-domain: office-management
-source: O'zDSt 1157:2008 — Tashkiliy-farmoyish hujjatlari tizimi; umumiy ish yuritish amaliyoti
-source_url: https://lex.uz/uz/docs/-5529263 (O'zDSt tasdiqlash); https://standart.uz
-tags: [ish-yuritish, delovodstvo, hujjat-aylanishi, ro'yxatga-olish, kiruvchi-hujjat, document-management]
-quality: production-ready
-language: [uz, en]
+confidence: 0.9
 country: UZ
-version: 1.0.0
+created: '2026-07-06'
+department: Administration
+domain: office-management
+id: OM-SOP-001
+language:
+- uz
+- en
 last_review: 2026-07-06
+owner: CKO / Knowledge Factory
+quality: production-ready
+role: Office Manager
+source: O'zDSt 1157:2008 — Tashkiliy-farmoyish hujjatlari tizimi; umumiy ish yuritish
+  amaliyoti
+source_url: https://lex.uz/uz/docs/-5529263 (O'zDSt tasdiqlash); https://standart.uz
+status: Published
+summary: Procedure for registering and routing incoming documents (record-keeping).
+tags:
+- ish-yuritish
+- delovodstvo
+- hujjat-aylanishi
+- ro'yxatga-olish
+- kiruvchi-hujjat
+- document-management
+title: Incoming Document Registration / Kiruvchi hujjatlarni ro'yxatga olish
+type: SOP
+updated: '2026-07-06'
+version: 1.0.0
 ---
 
 # 🇺🇿 Kiruvchi hujjatlarni ro'yxatga olish (SOP)

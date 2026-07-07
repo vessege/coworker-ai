@@ -1,21 +1,45 @@
 ---
-id: ACC-KA-003
-title: Key Tax Rates 2026 / Asosiy soliq stavkalari 2026
 category: knowledge-asset
-domain: accounting
-subdomain: tax-rates
-source: buxgalter.uz; azma.uz; kun.uz (2026 stavkalar o'zgarmaydi); gazeta.uz
-source_url: https://buxgalter.uz/oz/publish/doc/text212516_2026_yil_uchun_uzbekiston_respublikasi_soliq_kodeksida_qanday_uzgarishlar_kutilmoqda; https://kun.uz/news/2025/12/18/2026-yilda-asosiy-soliqlar-boyicha-stavkalar-ozgarmaydi
-tags: [stavka, soliq, QQS, foyda-soligi, aylanma-soliq, ijtimoiy-soliq, rate]
-quality: reviewed
-language: [uz, en]
+confidence: 0.8
 country: UZ
-version: 1.0.0
-valid_from: 2026-01-01
-source_verified: 2026-07-06
+created: '2026-01-01'
+department: Finance & Accounting
+domain: accounting
+id: ACC-KA-003
+language:
+- uz
+- en
 last_review: 2026-07-06
+owner: CKO / Knowledge Factory
+quality: reviewed
+relationships:
+- target: ACC-KA-002
+  type: related_to
+- target: ACC-FAQ-002
+  type: related_to
 review_cycle: quarterly
-related: [ACC-KA-002, ACC-FAQ-002]
+role: Accountant
+source: buxgalter.uz; azma.uz; kun.uz (2026 stavkalar o'zgarmaydi); gazeta.uz
+source_url: https://buxgalter.uz/oz/publish/doc/text212516_2026_yil_uchun_uzbekiston_respublikasi_soliq_kodeksida_qanday_uzgarishlar_kutilmoqda;
+  https://kun.uz/news/2025/12/18/2026-yilda-asosiy-soliqlar-boyicha-stavkalar-ozgarmaydi
+source_verified: 2026-07-06
+status: Approved
+subdomain: tax-rates
+summary: 'Key 2026 Uzbek tax rates: VAT 12%, profit 15%, turnover 4%/1%, sole-proprietor
+  social tax.'
+tags:
+- stavka
+- soliq
+- QQS
+- foyda-soligi
+- aylanma-soliq
+- ijtimoiy-soliq
+- rate
+title: Key Tax Rates 2026 / Asosiy soliq stavkalari 2026
+type: FACT
+updated: '2026-07-06'
+valid_from: 2026-01-01
+version: 1.0.0
 ---
 
 > ⚠️ Stavkalar faoliyat turi, hudud va rejimga qarab farqlanishi mumkin. Aniq holatni soliq.uz da tasdiqlang.

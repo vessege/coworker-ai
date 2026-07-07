@@ -1,20 +1,44 @@
 ---
-id: ACC-KA-001
-title: Recurring Tax Reporting & Payment Calendar (Legal Entities) / Yuridik shaxslar uchun soliq hisobot va to'lov taqvimi
 category: knowledge-asset
-domain: accounting
-subdomain: tax-compliance
-source: buxgalter.uz (oylik buxgalter taqvimi); azma.uz; soliq.uz soliq to'lovchi taqvimi
-source_url: https://buxgalter.uz/oz/publish/doc/text205067_bosh_buhgalter_rejasi; https://soliq.uz/services-facilities/taxpayer-calendar; https://azma.uz/tpost/7ux0mbzis1-aylanmadan-olinadigan-soliq-2026-stavkal
-tags: [soliq, taqvim, muddat, deadline, QQS, aylanma-soliq, foyda-soligi, hisobot, tax-calendar]
-quality: reviewed
-language: [uz, en]
+confidence: 0.8
 country: UZ
-version: 1.0.0
-valid_from: 2026-07-01
-source_verified: 2026-07-06
+created: '2026-07-01'
+department: Finance & Accounting
+domain: accounting
+id: ACC-KA-001
+language:
+- uz
+- en
 last_review: 2026-07-06
+owner: CKO / Knowledge Factory
+quality: reviewed
 review_cycle: monthly
+role: Accountant
+source: buxgalter.uz (oylik buxgalter taqvimi); azma.uz; soliq.uz soliq to'lovchi
+  taqvimi
+source_url: https://buxgalter.uz/oz/publish/doc/text205067_bosh_buhgalter_rejasi;
+  https://soliq.uz/services-facilities/taxpayer-calendar; https://azma.uz/tpost/7ux0mbzis1-aylanmadan-olinadigan-soliq-2026-stavkal
+source_verified: 2026-07-06
+status: Approved
+subdomain: tax-compliance
+summary: Recurring monthly, quarterly and annual tax reporting and payment deadlines
+  for legal entities.
+tags:
+- soliq
+- taqvim
+- muddat
+- deadline
+- QQS
+- aylanma-soliq
+- foyda-soligi
+- hisobot
+- tax-calendar
+title: Recurring Tax Reporting & Payment Calendar (Legal Entities) / Yuridik shaxslar
+  uchun soliq hisobot va to'lov taqvimi
+type: FACT
+updated: '2026-07-06'
+valid_from: 2026-07-01
+version: 1.0.0
 ---
 
 > ⚠️ **VOLATILITY WARNING / OGOHLANTIRISH.** O'zbekiston soliq qoidalari 2026-yilda

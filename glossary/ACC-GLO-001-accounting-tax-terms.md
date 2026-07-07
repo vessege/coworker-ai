@@ -1,20 +1,39 @@
 ---
-id: ACC-GLO-001
-title: Accounting & Tax Glossary (SME) / Buxgalteriya va soliq atamalari lug'ati
 category: glossary
+confidence: 0.8
+country: UZ
+created: '2026-01-01'
+department: Finance & Accounting
 domain: accounting
-subdomain: terminology
+id: ACC-GLO-001
+language:
+- uz
+- en
+last_review: 2026-07-06
+owner: CKO / Knowledge Factory
+quality: reviewed
+review_cycle: semiannual
+role: Accountant
 source: buxgalter.uz; soliq.uz; umumiy buxgalteriya amaliyoti
 source_url: https://soliq.uz; https://buxgalter.uz
-tags: [glossary, atamalar, soliq, buxgalteriya, QQS, BHM, STIR, vocabulary]
-quality: reviewed
-language: [uz, en]
-country: UZ
-version: 1.0.0
-valid_from: 2026-01-01
 source_verified: 2026-07-06
-last_review: 2026-07-06
-review_cycle: semiannual
+status: Approved
+subdomain: terminology
+summary: Bilingual glossary of Uzbek accounting and tax terms.
+tags:
+- glossary
+- atamalar
+- soliq
+- buxgalteriya
+- QQS
+- BHM
+- STIR
+- vocabulary
+title: Accounting & Tax Glossary (SME) / Buxgalteriya va soliq atamalari lug'ati
+type: FACT
+updated: '2026-07-06'
+valid_from: 2026-01-01
+version: 1.0.0
 ---
 
 # 🇺🇿 Buxgalteriya va soliq atamalari
