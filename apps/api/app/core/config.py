@@ -25,6 +25,9 @@ class Settings(BaseSettings):
     retrieval_top_k: int = 4
     retrieval_min_score: float = 1.0
 
+    # CORS (comma-separated origins allowed to call the API from the browser)
+    cors_origins: list[str] = ["http://localhost:3000"]
+
 
 @lru_cache
 def get_settings() -> Settings:
