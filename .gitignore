@@ -57,3 +57,6 @@ tmp/
 
 # Tenant secrets
 config/tenants.json
+
+# Build artifacts
+*.tsbuildinfo
