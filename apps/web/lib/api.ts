@@ -51,9 +51,33 @@ export interface AssetCard {
 }
 
 async function get<T>(path: string): Promise<T> {
-  const res = await fetch(`${API_URL}/api/v1${path}`);
+  const res = await fetch(`${API_URL}/api/v1${path}`, { headers: authHeaders() });
+  if (res.status === 429) throw new Error("Kredit limiti tugadi.");
+  if (res.status === 401) throw new Error("Kirish rad etildi (API kalit).");
   if (!res.ok) throw new Error(`API xatosi (${res.status}).`);
   return res.json() as Promise<T>;
+}
+
+export interface TenantInfo {
+  id: string;
+  name: string;
+  plan: string;
+  used: number;
+  remaining: number;
+}
+
+export interface TaskInfo {
+  id: string;
+  title: string;
+  description: string;
+  role: string;
+  priority: string;
+  status: string;
+  deadline: string;
+  assigned_agent: string;
+  related_knowledge: string[];
+  created_at: string;
+  updated_at: string;
 }
 
 export interface ModelInfo {
@@ -73,3 +97,11 @@ export const generate = (instruction: string, model?: string) =>
 export const listAssets = () => get<AssetCard[]>("/assets");
 
 export const listModels = () => get<ModelInfo[]>("/models");
+
+export const me = () => get<TenantInfo>("/me");
+
+export const listTasks = (status?: string) =>
+  get<TaskInfo[]>(status ? `/tasks?status=${encodeURIComponent(status)}` : "/tasks");
+
+export const uploadDocument = (name: string, content: string) =>
+  post<{ id: string; title: string; summary: string }>("/documents", { name, content });
