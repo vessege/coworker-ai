@@ -111,6 +111,14 @@ ln -sf /etc/nginx/sites-available/coworker /etc/nginx/sites-enabled/coworker
 rm -f /etc/nginx/sites-enabled/default
 nginx -t && systemctl reload nginx
 
+# ---------- 5.5 Give the repo back to the invoking user ----------
+# Running this script with sudo leaves root-owned files inside the repo,
+# which breaks the user's next `git pull` (dubious ownership / permissions).
+if [ -n "${SUDO_USER:-}" ]; then
+  chown -R "$SUDO_USER":"$SUDO_USER" "$REPO_DIR"
+  sudo -u "$SUDO_USER" git config --global --add safe.directory "$REPO_DIR" || true
+fi
+
 # ---------- 6. Smoke test ----------
 sleep 3
 echo "==> API health: $(curl -s http://127.0.0.1:8000/api/v1/health || echo FAIL)"
