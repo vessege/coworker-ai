@@ -23,6 +23,7 @@ _onec = OneCIntegration()
 class AskRequest(BaseModel):
     question: str = Field(..., min_length=2, examples=["QQS hisobotini qachon topshiraman?"])
     model: str | None = None
+    role: str | None = None  # coworker role filter: Accountant | HR | Office Manager
 
 
 class SourceRef(BaseModel):
@@ -118,7 +119,12 @@ def ask(req: AskRequest, tenant: Tenant = Depends(require_tenant)) -> AskRespons
     # The user's own documents get up to 2 reserved slots: when someone asks
     # about THEIR paperwork, it must not be crowded out by KB assets.
     top_k = _settings.retrieval_top_k
-    kb_hits = _kb.search(req.question, top_k, _settings.retrieval_min_score)
+    kb_hits = _kb.search(req.question, top_k * 2, _settings.retrieval_min_score)
+    # Selected coworker role gets a retrieval boost for its own domain assets.
+    if req.role:
+        kb_hits = [(a, s + (2.0 if a.role == req.role else 0.0)) for a, s in kb_hits]
+        kb_hits.sort(key=lambda x: x[1], reverse=True)
+    kb_hits = kb_hits[:top_k]
     doc_hits = _docs.search(tenant.id, req.question, 2, _settings.retrieval_min_score)
     hits = doc_hits + kb_hits[: top_k - len(doc_hits)]
     hits.sort(key=lambda x: x[1], reverse=True)

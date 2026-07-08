@@ -64,8 +64,8 @@ export interface ModelInfo {
   default: boolean;
 }
 
-export const ask = (question: string, model?: string) =>
-  post<AskResponse>("/ask", { question, model });
+export const ask = (question: string, model?: string, role?: string) =>
+  post<AskResponse>("/ask", { question, model, role });
 
 export const generate = (instruction: string, model?: string) =>
   post<GenerateResponse>("/generate", { instruction, model });
