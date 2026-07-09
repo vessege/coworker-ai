@@ -85,6 +85,16 @@ class LLMEngine:
                           {"role": "user", "content": user}],
             )
             return resp.choices[0].message.content or ""
+        if provider == "ollama":
+            from openai import OpenAI
+
+            resp = OpenAI(api_key="ollama", base_url=self.settings.ollama_base_url) \
+                .chat.completions.create(
+                    model=model_id, max_tokens=max_tokens,
+                    messages=[{"role": "system", "content": system},
+                              {"role": "user", "content": user}],
+                )
+            return resp.choices[0].message.content or ""
         raise ValueError(f"Unknown provider: {provider}")
 
     def answer(self, question: str, hits: list[tuple[Asset, float]],

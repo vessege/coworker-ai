@@ -51,6 +51,22 @@ EOF
   echo "==> Generated tenant API key: $TKEY  (config/tenants.json)"
 fi
 
+# ---------- 2.5 Local LLM (Ollama, optional — only if VPS RAM allows) ----------
+if ! command -v ollama >/dev/null; then
+  curl -fsSL https://ollama.com/install.sh | sh
+fi
+systemctl enable --now ollama
+OLLAMA_TAG="qwen2.5:7b-instruct"
+RAM_MB="$(free -m | awk '/^Mem:/{print $2}')"
+if [ "${RAM_MB:-0}" -ge 7000 ]; then
+  if ollama pull "$OLLAMA_TAG" && ! grep -q '^OLLAMA_MODEL=' "$API_DIR/.env"; then
+    echo "OLLAMA_MODEL=$OLLAMA_TAG" >> "$API_DIR/.env"
+  fi
+  echo "==> Local model: $OLLAMA_TAG"
+else
+  echo "==> VPS RAM (${RAM_MB}MB) < 7000MB — skipping local model, using cloud providers only."
+fi
+
 # ---------- 3. Web (Next.js build) ----------
 cd "$WEB_DIR"
 TENANT_KEY="$(python3 -c "import json;print(json.load(open('$REPO_DIR/config/tenants.json'))[0]['api_key'])")"

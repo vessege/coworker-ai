@@ -17,6 +17,12 @@ class Settings(BaseSettings):
     anthropic_api_key: str = ""
     openai_api_key: str = ""
 
+    # Self-hosted model (Ollama, OpenAI-compatible /v1 endpoint). Empty ollama_model
+    # means no local model is available; set it to the pulled tag (e.g.
+    # "qwen2.5:7b-instruct") to enable it in the model selector.
+    ollama_base_url: str = "http://127.0.0.1:11434/v1"
+    ollama_model: str = ""
+
     # Knowledge base root. Defaults to the repo root (4 levels up from this file:
     # app/core/config.py -> app -> api -> apps -> repo root).
     kb_root: Path = Path(__file__).resolve().parents[4]
@@ -45,6 +51,7 @@ MODELS: dict[str, dict] = {
     "claude-haiku-4-5-20251001": {"provider": "anthropic", "label": "Claude Haiku 4.5"},
     "gpt-5.5": {"provider": "openai", "label": "GPT-5.5"},
     "gpt-5": {"provider": "openai", "label": "GPT-5"},
+    "qwen2.5:7b-instruct": {"provider": "ollama", "label": "Qwen2.5 7B (lokal, VPS)"},
 }
 
 
@@ -52,6 +59,7 @@ def provider_key(settings: "Settings", provider: str) -> str:
     return {
         "anthropic": settings.anthropic_api_key,
         "openai": settings.openai_api_key,
+        "ollama": settings.ollama_model,
     }.get(provider, "")
 
 
