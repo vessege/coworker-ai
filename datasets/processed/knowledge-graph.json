@@ -1,0 +1,640 @@
+{
+  "nodes": [
+    {
+      "id": "ACC-KA-001",
+      "title": "Recurring Tax Reporting & Payment Calendar (Legal Entities) / Yuridik shaxslar uchun soliq hisobot va to'lov taqvimi",
+      "type": "FACT",
+      "role": "Accountant",
+      "department": "Finance & Accounting",
+      "status": "Approved",
+      "confidence": 0.8
+    },
+    {
+      "id": "ACC-KA-002",
+      "title": "SME Tax Regimes Overview / KO'B soliq rejimlari umumiy ko'rinishi",
+      "type": "FACT",
+      "role": "Accountant",
+      "department": "Finance & Accounting",
+      "status": "Approved",
+      "confidence": 0.8
+    },
+    {
+      "id": "ACC-KA-003",
+      "title": "Key Tax Rates 2026 / Asosiy soliq stavkalari 2026",
+      "type": "FACT",
+      "role": "Accountant",
+      "department": "Finance & Accounting",
+      "status": "Approved",
+      "confidence": 0.8
+    },
+    {
+      "id": "ACC-KA-004",
+      "title": "Penalties for Late Tax Filing/Payment / Soliq hisobot va to'lov kechikishi jarimalari",
+      "type": "FACT",
+      "role": "Accountant",
+      "department": "Finance & Accounting",
+      "status": "Approved",
+      "confidence": 0.8
+    },
+    {
+      "id": "ACC-KA-005",
+      "title": "Sole Proprietor (YaTT) Taxes & Obligations / YaTT soliqlari va majburiyatlari",
+      "type": "FACT",
+      "role": "Accountant",
+      "department": "Finance & Accounting",
+      "status": "Approved",
+      "confidence": 0.8
+    },
+    {
+      "id": "HR-KA-001",
+      "title": "Labour Code 2023 — Key Employment Rules / Mehnat kodeksi 2023 — asosiy qoidalar",
+      "type": "FACT",
+      "role": "HR",
+      "department": "Human Resources",
+      "status": "Approved",
+      "confidence": 0.85
+    },
+    {
+      "id": "ACC-FAQ-001",
+      "title": "Tax Deadline FAQ (SME) / Soliq muddatlari bo'yicha savol-javob (KO'B)",
+      "type": "FAQ",
+      "role": "Accountant",
+      "department": "Finance & Accounting",
+      "status": "Approved",
+      "confidence": 0.8
+    },
+    {
+      "id": "ACC-FAQ-002",
+      "title": "Tax Rates & Regimes FAQ / Soliq stavkalari va rejimlari savol-javob",
+      "type": "FAQ",
+      "role": "Accountant",
+      "department": "Finance & Accounting",
+      "status": "Approved",
+      "confidence": 0.8
+    },
+    {
+      "id": "HR-FAQ-001",
+      "title": "Labour Law FAQ (SME) / Mehnat huquqi savol-javob (KO'B)",
+      "type": "FAQ",
+      "role": "HR",
+      "department": "Human Resources",
+      "status": "Approved",
+      "confidence": 0.85
+    },
+    {
+      "id": "OM-FAQ-001",
+      "title": "Office Management FAQ / Ish yuritish bo'yicha savol-javob",
+      "type": "FAQ",
+      "role": "Office Manager",
+      "department": "Administration",
+      "status": "Approved",
+      "confidence": 0.85
+    },
+    {
+      "id": "ACC-SOP-001",
+      "title": "Monthly Accounting Close & Reporting / Oylik buxgalteriya yopilishi va hisobot",
+      "type": "SOP",
+      "role": "Accountant",
+      "department": "Finance & Accounting",
+      "status": "Approved",
+      "confidence": 0.8
+    },
+    {
+      "id": "HR-SOP-001",
+      "title": "Employee Hiring & Formalization / Xodimni ishga qabul qilish va rasmiylashtirish",
+      "type": "SOP",
+      "role": "HR",
+      "department": "Human Resources",
+      "status": "Approved",
+      "confidence": 0.85
+    },
+    {
+      "id": "HR-SOP-002",
+      "title": "Employee Termination Procedure / Xodimni ishdan bo'shatish tartibi",
+      "type": "SOP",
+      "role": "HR",
+      "department": "Human Resources",
+      "status": "Approved",
+      "confidence": 0.75
+    },
+    {
+      "id": "OM-SOP-001",
+      "title": "Incoming Document Registration / Kiruvchi hujjatlarni ro'yxatga olish",
+      "type": "SOP",
+      "role": "Office Manager",
+      "department": "Administration",
+      "status": "Published",
+      "confidence": 0.9
+    },
+    {
+      "id": "OM-SOP-002",
+      "title": "Outgoing Document Preparation & Dispatch / Chiquvchi hujjatlarni tayyorlash va jo'natish",
+      "type": "SOP",
+      "role": "Office Manager",
+      "department": "Administration",
+      "status": "Approved",
+      "confidence": 0.85
+    },
+    {
+      "id": "OM-SOP-003",
+      "title": "Document Archiving Procedure / Hujjatlarni arxivga topshirish tartibi",
+      "type": "SOP",
+      "role": "Office Manager",
+      "department": "Administration",
+      "status": "Approved",
+      "confidence": 0.8
+    },
+    {
+      "id": "ACC-CHK-001",
+      "title": "Quarterly Tax Filing Checklist / Choraklik soliq hisoboti checklisti",
+      "type": "CHECKLIST",
+      "role": "Accountant",
+      "department": "Finance & Accounting",
+      "status": "Approved",
+      "confidence": 0.8
+    },
+    {
+      "id": "ACC-CHK-002",
+      "title": "Month-End Closing Checklist / Oy oxirini yopish checklisti",
+      "type": "CHECKLIST",
+      "role": "Accountant",
+      "department": "Finance & Accounting",
+      "status": "Approved",
+      "confidence": 0.75
+    },
+    {
+      "id": "HR-CHK-001",
+      "title": "Hiring Compliance Checklist / Ishga qabul qilishda huquqiy tekshiruv checklisti",
+      "type": "CHECKLIST",
+      "role": "HR",
+      "department": "Human Resources",
+      "status": "Approved",
+      "confidence": 0.85
+    },
+    {
+      "id": "HR-CHK-002",
+      "title": "New Employee First Day Checklist / Yangi xodimning birinchi ish kuni checklisti",
+      "type": "CHECKLIST",
+      "role": "HR",
+      "department": "Human Resources",
+      "status": "Approved",
+      "confidence": 0.8
+    },
+    {
+      "id": "OM-CHK-001",
+      "title": "New Employee Onboarding — Office Manager Checklist / Yangi xodimni ishga qabul qilish — ofis-menejer checklisti",
+      "type": "CHECKLIST",
+      "role": "Office Manager",
+      "department": "Administration",
+      "status": "Published",
+      "confidence": 0.9
+    },
+    {
+      "id": "OM-CHK-002",
+      "title": "Employee Offboarding — Office Manager Checklist / Xodim ishdan chiqishida — ofis-menejer checklisti",
+      "type": "CHECKLIST",
+      "role": "Office Manager",
+      "department": "Administration",
+      "status": "Approved",
+      "confidence": 0.8
+    },
+    {
+      "id": "ACC-TPL-001",
+      "title": "Invoice (Schyot-faktura / Hisobvaraq-faktura) / Hisobvaraq-faktura",
+      "type": "TEMPLATE",
+      "role": "Accountant",
+      "department": "Finance & Accounting",
+      "status": "Approved",
+      "confidence": 0.8
+    },
+    {
+      "id": "ACC-TPL-002",
+      "title": "Act of Completed Works/Services / Bajarilgan ishlar (xizmatlar) dalolatnomasi",
+      "type": "TEMPLATE",
+      "role": "Accountant",
+      "department": "Finance & Accounting",
+      "status": "Approved",
+      "confidence": 0.8
+    },
+    {
+      "id": "ACC-TPL-003",
+      "title": "Service Contract (Shartnoma) / Xizmat ko'rsatish shartnomasi",
+      "type": "TEMPLATE",
+      "role": "Accountant",
+      "department": "Finance & Accounting",
+      "status": "Approved",
+      "confidence": 0.8
+    },
+    {
+      "id": "ACC-TPL-004",
+      "title": "Power of Attorney for Receiving Goods / Tovar-moddiy boyliklarni olish uchun ishonchnoma",
+      "type": "TEMPLATE",
+      "role": "Accountant",
+      "department": "Finance & Accounting",
+      "status": "Approved",
+      "confidence": 0.75
+    },
+    {
+      "id": "HR-TPL-001",
+      "title": "Hiring Order (Buyruq) / Ishga qabul qilish to'g'risida buyruq",
+      "type": "TEMPLATE",
+      "role": "HR",
+      "department": "Human Resources",
+      "status": "Approved",
+      "confidence": 0.8
+    },
+    {
+      "id": "HR-TPL-002",
+      "title": "Termination Order (Buyruq) / Ishdan bo'shatish to'g'risida buyruq",
+      "type": "TEMPLATE",
+      "role": "HR",
+      "department": "Human Resources",
+      "status": "Approved",
+      "confidence": 0.75
+    },
+    {
+      "id": "OM-TPL-001",
+      "title": "Official Outgoing Business Letter / Rasmiy chiquvchi ishbilarmonlik xati",
+      "type": "TEMPLATE",
+      "role": "Office Manager",
+      "department": "Administration",
+      "status": "Published",
+      "confidence": 0.9
+    },
+    {
+      "id": "OM-TPL-002",
+      "title": "Employment Certificate (Ma'lumotnoma) / Ish joyidan ma'lumotnoma",
+      "type": "TEMPLATE",
+      "role": "Office Manager",
+      "department": "Administration",
+      "status": "Approved",
+      "confidence": 0.85
+    },
+    {
+      "id": "OM-TPL-003",
+      "title": "Internal Memo / Ichki xizmat xati (eslatma)",
+      "type": "TEMPLATE",
+      "role": "Office Manager",
+      "department": "Administration",
+      "status": "Approved",
+      "confidence": 0.85
+    },
+    {
+      "id": "ACC-BR-001",
+      "title": "Primary Document Rules / Birlamchi hujjatlar qoidalari",
+      "type": "RULE",
+      "role": "Accountant",
+      "department": "Finance & Accounting",
+      "status": "Approved",
+      "confidence": 0.8
+    },
+    {
+      "id": "OM-BR-001",
+      "title": "Document Registration & Indexing Rules / Hujjatlarni ro'yxatga olish va indekslash qoidalari",
+      "type": "RULE",
+      "role": "Office Manager",
+      "department": "Administration",
+      "status": "Published",
+      "confidence": 0.9
+    },
+    {
+      "id": "ACC-DT-001",
+      "title": "Tax Regime Selection Decision Tree / Soliq rejimini tanlash qaror daraxti",
+      "type": "DECISION",
+      "role": "Accountant",
+      "department": "Finance & Accounting",
+      "status": "Approved",
+      "confidence": 0.8
+    },
+    {
+      "id": "ACC-GLO-001",
+      "title": "Accounting & Tax Glossary (SME) / Buxgalteriya va soliq atamalari lug'ati",
+      "type": "FACT",
+      "role": "Accountant",
+      "department": "Finance & Accounting",
+      "status": "Approved",
+      "confidence": 0.8
+    },
+    {
+      "id": "OM-GLO-001",
+      "title": "Office Management & Record-Keeping Glossary / Ish yuritish va ofis boshqaruvi lug'ati",
+      "type": "FACT",
+      "role": "Office Manager",
+      "department": "Administration",
+      "status": "Published",
+      "confidence": 0.9
+    }
+  ],
+  "edges": [
+    {
+      "source": "ACC-KA-002",
+      "type": "related_to",
+      "target": "ACC-KA-003"
+    },
+    {
+      "source": "ACC-KA-002",
+      "type": "related_to",
+      "target": "ACC-FAQ-002"
+    },
+    {
+      "source": "ACC-KA-003",
+      "type": "related_to",
+      "target": "ACC-KA-002"
+    },
+    {
+      "source": "ACC-KA-003",
+      "type": "related_to",
+      "target": "ACC-FAQ-002"
+    },
+    {
+      "source": "ACC-KA-004",
+      "type": "related_to",
+      "target": "ACC-KA-001"
+    },
+    {
+      "source": "ACC-KA-004",
+      "type": "related_to",
+      "target": "ACC-FAQ-001"
+    },
+    {
+      "source": "ACC-KA-005",
+      "type": "references",
+      "target": "ACC-KA-002"
+    },
+    {
+      "source": "ACC-KA-005",
+      "type": "references",
+      "target": "ACC-KA-003"
+    },
+    {
+      "source": "HR-KA-001",
+      "type": "references",
+      "target": "HR-SOP-001"
+    },
+    {
+      "source": "HR-KA-001",
+      "type": "references",
+      "target": "HR-FAQ-001"
+    },
+    {
+      "source": "ACC-FAQ-001",
+      "type": "related_to",
+      "target": "ACC-KA-001"
+    },
+    {
+      "source": "ACC-FAQ-002",
+      "type": "related_to",
+      "target": "ACC-KA-002"
+    },
+    {
+      "source": "ACC-FAQ-002",
+      "type": "related_to",
+      "target": "ACC-KA-003"
+    },
+    {
+      "source": "HR-FAQ-001",
+      "type": "references",
+      "target": "HR-KA-001"
+    },
+    {
+      "source": "OM-FAQ-001",
+      "type": "references",
+      "target": "OM-SOP-001"
+    },
+    {
+      "source": "OM-FAQ-001",
+      "type": "references",
+      "target": "OM-SOP-002"
+    },
+    {
+      "source": "OM-FAQ-001",
+      "type": "references",
+      "target": "OM-BR-001"
+    },
+    {
+      "source": "ACC-SOP-001",
+      "type": "related_to",
+      "target": "ACC-KA-001"
+    },
+    {
+      "source": "ACC-SOP-001",
+      "type": "related_to",
+      "target": "ACC-FAQ-001"
+    },
+    {
+      "source": "ACC-SOP-001",
+      "type": "related_to",
+      "target": "ACC-TPL-001"
+    },
+    {
+      "source": "HR-SOP-001",
+      "type": "requires",
+      "target": "HR-KA-001"
+    },
+    {
+      "source": "HR-SOP-001",
+      "type": "produces",
+      "target": "HR-TPL-001"
+    },
+    {
+      "source": "HR-SOP-001",
+      "type": "references",
+      "target": "OM-CHK-001"
+    },
+    {
+      "source": "HR-SOP-002",
+      "type": "requires",
+      "target": "HR-KA-001"
+    },
+    {
+      "source": "HR-SOP-002",
+      "type": "produces",
+      "target": "HR-TPL-002"
+    },
+    {
+      "source": "HR-SOP-002",
+      "type": "references",
+      "target": "HR-SOP-001"
+    },
+    {
+      "source": "OM-SOP-002",
+      "type": "references",
+      "target": "OM-TPL-001"
+    },
+    {
+      "source": "OM-SOP-002",
+      "type": "references",
+      "target": "OM-BR-001"
+    },
+    {
+      "source": "OM-SOP-002",
+      "type": "extends",
+      "target": "OM-SOP-001"
+    },
+    {
+      "source": "OM-SOP-003",
+      "type": "references",
+      "target": "OM-SOP-001"
+    },
+    {
+      "source": "OM-SOP-003",
+      "type": "references",
+      "target": "OM-BR-001"
+    },
+    {
+      "source": "ACC-CHK-001",
+      "type": "depends_on",
+      "target": "ACC-KA-001"
+    },
+    {
+      "source": "ACC-CHK-001",
+      "type": "references",
+      "target": "ACC-SOP-001"
+    },
+    {
+      "source": "ACC-CHK-001",
+      "type": "references",
+      "target": "ACC-KA-004"
+    },
+    {
+      "source": "ACC-CHK-002",
+      "type": "depends_on",
+      "target": "ACC-SOP-001"
+    },
+    {
+      "source": "ACC-CHK-002",
+      "type": "references",
+      "target": "ACC-KA-001"
+    },
+    {
+      "source": "HR-CHK-001",
+      "type": "depends_on",
+      "target": "HR-SOP-001"
+    },
+    {
+      "source": "HR-CHK-001",
+      "type": "references",
+      "target": "OM-CHK-001"
+    },
+    {
+      "source": "HR-CHK-002",
+      "type": "depends_on",
+      "target": "HR-CHK-001"
+    },
+    {
+      "source": "HR-CHK-002",
+      "type": "references",
+      "target": "OM-CHK-001"
+    },
+    {
+      "source": "OM-CHK-002",
+      "type": "extends",
+      "target": "OM-CHK-001"
+    },
+    {
+      "source": "OM-CHK-002",
+      "type": "references",
+      "target": "HR-KA-001"
+    },
+    {
+      "source": "ACC-TPL-001",
+      "type": "related_to",
+      "target": "ACC-KA-001"
+    },
+    {
+      "source": "ACC-TPL-001",
+      "type": "related_to",
+      "target": "ACC-TPL-002"
+    },
+    {
+      "source": "ACC-TPL-002",
+      "type": "related_to",
+      "target": "ACC-TPL-001"
+    },
+    {
+      "source": "ACC-TPL-003",
+      "type": "related_to",
+      "target": "ACC-TPL-001"
+    },
+    {
+      "source": "ACC-TPL-003",
+      "type": "related_to",
+      "target": "ACC-TPL-002"
+    },
+    {
+      "source": "ACC-TPL-004",
+      "type": "references",
+      "target": "ACC-BR-001"
+    },
+    {
+      "source": "ACC-TPL-004",
+      "type": "references",
+      "target": "ACC-TPL-001"
+    },
+    {
+      "source": "HR-TPL-001",
+      "type": "created_from",
+      "target": "HR-SOP-001"
+    },
+    {
+      "source": "HR-TPL-001",
+      "type": "references",
+      "target": "OM-TPL-001"
+    },
+    {
+      "source": "HR-TPL-002",
+      "type": "created_from",
+      "target": "HR-SOP-002"
+    },
+    {
+      "source": "HR-TPL-002",
+      "type": "references",
+      "target": "HR-TPL-001"
+    },
+    {
+      "source": "OM-TPL-002",
+      "type": "references",
+      "target": "OM-TPL-001"
+    },
+    {
+      "source": "OM-TPL-002",
+      "type": "references",
+      "target": "OM-SOP-002"
+    },
+    {
+      "source": "OM-TPL-003",
+      "type": "references",
+      "target": "OM-TPL-001"
+    },
+    {
+      "source": "OM-TPL-003",
+      "type": "references",
+      "target": "OM-SOP-002"
+    },
+    {
+      "source": "ACC-BR-001",
+      "type": "references",
+      "target": "ACC-TPL-001"
+    },
+    {
+      "source": "ACC-BR-001",
+      "type": "references",
+      "target": "ACC-TPL-002"
+    },
+    {
+      "source": "ACC-BR-001",
+      "type": "references",
+      "target": "ACC-SOP-001"
+    },
+    {
+      "source": "ACC-DT-001",
+      "type": "related_to",
+      "target": "ACC-KA-002"
+    },
+    {
+      "source": "ACC-DT-001",
+      "type": "related_to",
+      "target": "ACC-KA-003"
+    }
+  ]
+}
