@@ -51,20 +51,39 @@ EOF
   echo "==> Generated tenant API key: $TKEY  (config/tenants.json)"
 fi
 
-# ---------- 2.5 Local LLM (Ollama, optional — only if VPS RAM allows) ----------
-if ! command -v ollama >/dev/null; then
-  curl -fsSL https://ollama.com/install.sh | sh
-fi
-systemctl enable --now ollama
-OLLAMA_TAG="qwen2.5:7b-instruct"
+# ---------- 2.5 Local LLM (Ollama) — disk- and RAM-aware, opt-out safe ----------
+# A 7B model is ~4.7GB; a 3B is ~2GB. On a small boot disk (GCP default 10GB)
+# pulling 7B fills the disk and breaks apt/the next deploy. So we PICK a model
+# that fits the free disk, and skip entirely when resources are too tight.
+# Force off with ENABLE_LOCAL_MODEL=0; force a tag with OLLAMA_TAG=... .
 RAM_MB="$(free -m | awk '/^Mem:/{print $2}')"
-if [ "${RAM_MB:-0}" -ge 7000 ]; then
-  if ollama pull "$OLLAMA_TAG" && ! grep -q '^OLLAMA_MODEL=' "$API_DIR/.env"; then
-    echo "OLLAMA_MODEL=$OLLAMA_TAG" >> "$API_DIR/.env"
+DISK_FREE_GB="$(df -BG --output=avail "$REPO_DIR" | tail -1 | tr -dc '0-9')"
+WANT_MODEL="${OLLAMA_TAG:-}"
+if [ -z "$WANT_MODEL" ]; then
+  if [ "${DISK_FREE_GB:-0}" -ge 12 ] && [ "${RAM_MB:-0}" -ge 7000 ]; then
+    WANT_MODEL="qwen2.5:7b-instruct"
+  elif [ "${DISK_FREE_GB:-0}" -ge 6 ] && [ "${RAM_MB:-0}" -ge 4000 ]; then
+    WANT_MODEL="qwen2.5:3b-instruct"
   fi
-  echo "==> Local model: $OLLAMA_TAG"
+fi
+if [ "${ENABLE_LOCAL_MODEL:-1}" = "1" ] && [ -n "$WANT_MODEL" ]; then
+  if ! command -v ollama >/dev/null; then
+    curl -fsSL https://ollama.com/install.sh | sh
+  fi
+  systemctl enable --now ollama
+  if ollama pull "$WANT_MODEL"; then
+    if grep -q '^OLLAMA_MODEL=' "$API_DIR/.env"; then
+      sed -i "s|^OLLAMA_MODEL=.*|OLLAMA_MODEL=$WANT_MODEL|" "$API_DIR/.env"
+    else
+      echo "OLLAMA_MODEL=$WANT_MODEL" >> "$API_DIR/.env"
+    fi
+    echo "==> Local model: $WANT_MODEL (disk ${DISK_FREE_GB}GB free, RAM ${RAM_MB}MB)"
+  else
+    echo "==> ollama pull failed — continuing with cloud providers only."
+  fi
 else
-  echo "==> VPS RAM (${RAM_MB}MB) < 7000MB — skipping local model, using cloud providers only."
+  echo "==> Skipping local model (disk ${DISK_FREE_GB}GB free, RAM ${RAM_MB}MB, or disabled)."
+  echo "    To enable later: resize the disk, then re-run with OLLAMA_TAG=qwen2.5:3b-instruct."
 fi
 
 # ---------- 3. Web (Next.js build) ----------
